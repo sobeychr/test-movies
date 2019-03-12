@@ -1,0 +1,17 @@
+; https://github.com/php/php-src/blob/master/php.ini-production
+
+display_errors=On
+display_startup_errors=On
+error_reporting=E_ALL
+html_errors=On
+log_errors=Off
+output_buffering=4096
+register_argc_argv=off
+short_open_tag=Off
+
+precision=14
+serialize_precision=-1
+expose_php=Off
+max_execution_time=7
+max_input_time=7
+memory_limit=128M
