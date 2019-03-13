@@ -7,7 +7,7 @@
         "test": "tests"
     },
     "scripts": {
-        "server": "php -S test-movies:300 -c php.ini",
+        "server": "php -S test-movies:300 -t public -c php.ini",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {

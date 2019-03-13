@@ -15,3 +15,15 @@ expose_php=Off
 max_execution_time=7
 max_input_time=7
 memory_limit=128M
+file_uploads=Off
+default_socket_timeout=7
+
+cli_server.color=On
+date.timezone=UTC
+
+; extension=mysqli
+
+; mysqli.max_links=-1
+; mysqli.max_persistent=0
+; mysqli.allow_persistent=Off
+; mysqli.reconnect=Off
