@@ -7,7 +7,7 @@
       "last": "blomvik"
     },
     "email": "amal.blomvik@example.com",
-    "rating": 0.08
+    "rating": 0
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
       "last": "spruit"
     },
     "email": "ankje.spruit@example.com",
-    "rating": 0.28
+    "rating": 0
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
       "last": "pektemek"
     },
     "email": "macit.pektemek@example.com",
-    "rating": 0.46
+    "rating": 0
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
       "last": "doan"
     },
     "email": "mila.doan@example.com",
-    "rating": 0.85
+    "rating": 0
   },
   {
     "id": 5,
@@ -47,7 +47,7 @@
       "last": "zhang"
     },
     "email": "alexander.zhang@example.com",
-    "rating": 0.24
+    "rating": 0
   },
   {
     "id": 6,
@@ -57,7 +57,7 @@
       "last": "jesus"
     },
     "email": "nino.jesus@example.com",
-    "rating": 0.51
+    "rating": 0
   },
   {
     "id": 7,
@@ -67,7 +67,7 @@
       "last": "reyes"
     },
     "email": "brian.reyes@example.com",
-    "rating": 0.73
+    "rating": 0
   },
   {
     "id": 8,
@@ -77,7 +77,7 @@
       "last": "thompson"
     },
     "email": "nathan.thompson@example.com",
-    "rating": 0.1
+    "rating": 0
   },
   {
     "id": 9,
@@ -87,7 +87,7 @@
       "last": "norris"
     },
     "email": "chuck.norris@example.com",
-    "rating": 0.08
+    "rating": 0
   },
   {
     "id": 10,
@@ -97,7 +97,7 @@
       "last": "morris"
     },
     "email": "chloe.morris@example.com",
-    "rating": 0.98
+    "rating": 0
   },
   {
     "id": 11,
@@ -107,7 +107,7 @@
       "last": "taylor"
     },
     "email": "lola.taylor@example.com",
-    "rating": 0.88
+    "rating": 0
   },
   {
     "id": 12,
@@ -117,7 +117,7 @@
       "last": "bertrand"
     },
     "email": "armand.bertrand@example.com",
-    "rating": 0.76
+    "rating": 0
   },
   {
     "id": 13,
@@ -127,7 +127,7 @@
       "last": "parker"
     },
     "email": "seth.parker@example.com",
-    "rating": 0.24
+    "rating": 0
   },
   {
     "id": 14,
@@ -137,7 +137,7 @@
       "last": "da rosa"
     },
     "email": "dener.darosa@example.com",
-    "rating": 0.1
+    "rating": 0
   },
   {
     "id": 15,
@@ -147,7 +147,7 @@
       "last": "fiskå"
     },
     "email": "steinar.fiskå@example.com",
-    "rating": 0.63
+    "rating": 0
   },
   {
     "id": 16,
@@ -157,7 +157,7 @@
       "last": "bohne"
     },
     "email": "luka.bohne@example.com",
-    "rating": 0.04
+    "rating": 0
   },
   {
     "id": 17,
@@ -167,7 +167,7 @@
       "last": "foster"
     },
     "email": "noah.foster@example.com",
-    "rating": 0.53
+    "rating": 0
   },
   {
     "id": 18,
@@ -177,7 +177,7 @@
       "last": "henderson"
     },
     "email": "leroy.henderson@example.com",
-    "rating": 0.74
+    "rating": 0
   },
   {
     "id": 19,
@@ -187,7 +187,7 @@
       "last": "mathieu"
     },
     "email": "flavie.mathieu@example.com",
-    "rating": 0.09
+    "rating": 0
   },
   {
     "id": 20,
@@ -197,7 +197,7 @@
       "last": "koedijk"
     },
     "email": "faik.koedijk@example.com",
-    "rating": 0.65
+    "rating": 0
   },
   {
     "id": 21,
@@ -207,7 +207,7 @@
       "last": "hansen"
     },
     "email": "ivan.hansen@example.com",
-    "rating": 0.7
+    "rating": 0
   },
   {
     "id": 22,
@@ -217,7 +217,7 @@
       "last": "byrd"
     },
     "email": "anna.byrd@example.com",
-    "rating": 0.44
+    "rating": 0
   },
   {
     "id": 23,
@@ -227,7 +227,7 @@
       "last": "gümüşpala"
     },
     "email": "mestan.gümüşpala@example.com",
-    "rating": 0.78
+    "rating": 0
   },
   {
     "id": 24,
@@ -237,7 +237,7 @@
       "last": "abadan"
     },
     "email": "vildan.abadan@example.com",
-    "rating": 0.57
+    "rating": 0
   },
   {
     "id": 25,
@@ -247,7 +247,7 @@
       "last": "simmmons"
     },
     "email": "anna.simmmons@example.com",
-    "rating": 0.66
+    "rating": 0
   },
   {
     "id": 26,
@@ -257,7 +257,7 @@
       "last": "matern"
     },
     "email": "franz.matern@example.com",
-    "rating": 0.42
+    "rating": 0
   },
   {
     "id": 27,
@@ -267,7 +267,7 @@
       "last": "melo"
     },
     "email": "juraci.melo@example.com",
-    "rating": 0.88
+    "rating": 0
   },
   {
     "id": 28,
@@ -277,7 +277,7 @@
       "last": "warren"
     },
     "email": "chloe.warren@example.com",
-    "rating": 0.84
+    "rating": 0
   },
   {
     "id": 29,
@@ -287,7 +287,7 @@
       "last": "جعفری"
     },
     "email": "سهیل.جعفری@example.com",
-    "rating": 0.74
+    "rating": 0
   },
   {
     "id": 30,
@@ -297,7 +297,7 @@
       "last": "wuollet"
     },
     "email": "jimi.wuollet@example.com",
-    "rating": 0.12
+    "rating": 0
   },
   {
     "id": 31,
@@ -307,7 +307,7 @@
       "last": "allen"
     },
     "email": "evan.allen@example.com",
-    "rating": 0.8
+    "rating": 0
   },
   {
     "id": 32,
@@ -317,7 +317,7 @@
       "last": "daniels"
     },
     "email": "sheryl.daniels@example.com",
-    "rating": 0.84
+    "rating": 0
   },
   {
     "id": 33,
@@ -327,7 +327,7 @@
       "last": "dağlaroğlu"
     },
     "email": "özsu.dağlaroğlu@example.com",
-    "rating": 0.94
+    "rating": 0
   },
   {
     "id": 34,
@@ -337,7 +337,7 @@
       "last": "louis"
     },
     "email": "claude.louis@example.com",
-    "rating": 0.13
+    "rating": 0
   },
   {
     "id": 35,
@@ -347,7 +347,7 @@
       "last": "lorenzo"
     },
     "email": "catalina.lorenzo@example.com",
-    "rating": 0.26
+    "rating": 0
   },
   {
     "id": 36,
@@ -357,7 +357,7 @@
       "last": "louis"
     },
     "email": "roméo.louis@example.com",
-    "rating": 0.15
+    "rating": 0
   },
   {
     "id": 37,
@@ -367,7 +367,7 @@
       "last": "perkins"
     },
     "email": "eliza.perkins@example.com",
-    "rating": 0.16
+    "rating": 0
   },
   {
     "id": 38,
@@ -377,7 +377,7 @@
       "last": "düşenkalkar"
     },
     "email": "mehmet.düşenkalkar@example.com",
-    "rating": 0.44
+    "rating": 0
   },
   {
     "id": 39,
@@ -387,7 +387,7 @@
       "last": "pierce"
     },
     "email": "carolyn.pierce@example.com",
-    "rating": 0.61
+    "rating": 0
   },
   {
     "id": 40,
@@ -397,7 +397,7 @@
       "last": "girard"
     },
     "email": "amaury.girard@example.com",
-    "rating": 0.29
+    "rating": 0
   },
   {
     "id": 41,
@@ -407,7 +407,7 @@
       "last": "adam"
     },
     "email": "charlotte.adam@example.com",
-    "rating": 0.84
+    "rating": 0
   },
   {
     "id": 42,
@@ -417,7 +417,7 @@
       "last": "moser"
     },
     "email": "henni.moser@example.com",
-    "rating": 0.43
+    "rating": 0
   },
   {
     "id": 43,
@@ -427,7 +427,7 @@
       "last": "sanchez"
     },
     "email": "yanis.sanchez@example.com",
-    "rating": 0.84
+    "rating": 0
   },
   {
     "id": 44,
@@ -437,7 +437,7 @@
       "last": "wood"
     },
     "email": "vincent.wood@example.com",
-    "rating": 0.01
+    "rating": 0
   },
   {
     "id": 45,
@@ -447,7 +447,7 @@
       "last": "reynolds"
     },
     "email": "amber.reynolds@example.com",
-    "rating": 0.23
+    "rating": 0
   },
   {
     "id": 46,
@@ -457,7 +457,7 @@
       "last": "beta"
     },
     "email": "alpha.beta@example.com",
-    "rating": 0.29
+    "rating": 0
   },
   {
     "id": 47,
@@ -467,7 +467,7 @@
       "last": "olson"
     },
     "email": "ruby.olson@example.com",
-    "rating": 0.03
+    "rating": 0
   },
   {
     "id": 48,
@@ -477,7 +477,7 @@
       "last": "burke"
     },
     "email": "stacy.burke@example.com",
-    "rating": 0.2
+    "rating": 0
   },
   {
     "id": 49,
@@ -487,7 +487,7 @@
       "last": "meyer"
     },
     "email": "darren.meyer@example.com",
-    "rating": 0.68
+    "rating": 0
   },
   {
     "id": 50,
@@ -497,6 +497,6 @@
       "last": "annala"
     },
     "email": "pihla.annala@example.com",
-    "rating": 0.4
+    "rating": 0
   }
 ]
