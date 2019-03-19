@@ -28,10 +28,6 @@ $router->get('/test/rates', [
     'uses' => 'TestController@generateRates',
 ]);
 
-$router->get('/test/update[/{output:user|movie}]', [
-    'uses' => 'TestController@updateRates',
-]);
-
 $router->get('/test/users', [
     'uses' => 'TestController@generateUsers',
 ]);

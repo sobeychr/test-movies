@@ -1,3 +1,6 @@
+/node_modules
+/public/asset/css
+/public/asset/js
 /vendor
 /.idea
 Homestead.json

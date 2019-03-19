@@ -125,10 +125,11 @@ class TestController extends Controller
         foreach($jsonArr as &$entry)
         {
             $i++;
-            $rating = rand(0, 100) * .01;
+            list($rating, $total) = $this->getUserRating($i);
 
             $entry['id'] = $i;
-            $entry['rating'] = 0;
+            $entry['rating'] = round($rating, 2);
+            $entry['total']  = $total;
         }
 
         return response()->json($jsonArr, 200);
@@ -145,11 +146,56 @@ class TestController extends Controller
         );
     }
 
+    protected function getMovieRate(int $movieId):float
+    {
+        $ratingArr = $this->loadJson('rating');
+        $movie = $ratingArr[$movieId];
+        $rate  = array_column($movie, 'rate');
+        return array_sum($rate) / count($rate);
+    }
+
+    protected function getUserRating(int $userid):array
+    {
+        $maxRate = 1;
+        $rates  = [];
+        $total  = 0;
+
+        $ratingArr = $this->loadJson('rating');
+        
+        foreach($ratingArr as $movieId => $ratings)
+        {
+            foreach($ratings as $entry)
+            {
+                if($entry['user'] === $userid) {
+                    $total++;
+
+                    $movieRate = $this->getMovieRate($movieId);
+                    $rate = $entry['rate'] / $movieRate;
+                    if($rate > $maxRate) {
+                        $rate = $maxRate - ($rate - $maxRate);
+                    }
+                    $rates[] = $rate;
+                }
+            }
+        }
+
+        return [
+            array_sum($rates) / count($rates),
+            $total
+        ];
+    }
+
     protected function loadJson(string $filename):array
     {
+        static $g_loadJson=[];
+        if(isset( $g_loadJson[$filename] )) {
+            return $g_loadJson[$filename];
+        }
+
         $jsonPath = './../database/json/'. $filename .'.json';
         $jsonStr = file_get_contents($jsonPath);
         $jsonArr = json_decode($jsonStr, true);
+        $g_loadJson[$filename] = $jsonArr;
         return $jsonArr;
     }
 
