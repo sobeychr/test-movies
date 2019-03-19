@@ -4,6 +4,8 @@ module.exports = grunt => {
     require('./grunt/function.js')(grunt);
     require('./grunt/config.js')(grunt);
 
+    require('time-grunt')(grunt);
+
     const taskConfigs = require('./grunt/task.js')(grunt);
     taskConfigs.pkg  = grunt.file.readJSON('./package.json');
     taskConfigs.date = grunt.config.get('dateStr');

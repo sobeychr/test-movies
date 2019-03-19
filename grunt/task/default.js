@@ -2,7 +2,11 @@
 
 module.exports = grunt => {
 
-    grunt.task.registerTask('default', () => {
-        grunt.log.writeln('ttt');
-    });
+    const isDev = grunt.config.get('isDev');
+
+    const tasks = [
+        isDev ? 'sass:dev' : 'sass:dist'
+    ];
+
+    grunt.task.registerTask('default', tasks);
 };

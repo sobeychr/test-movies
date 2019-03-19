@@ -10,7 +10,7 @@ module.exports = grunt => {
         },
 
         sass: {
-            files: ['./public/asset/scss/**/*.scss'],
+            files: ['<%= config.assetSrc %>scss/**/*.scss'],
             tasks: ['sass']
         }
     };

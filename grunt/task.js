@@ -23,5 +23,11 @@ module.exports = grunt => {
         require('./task/' + filename)(grunt);
     });
 
+    // Task configs
+    configs.config = {
+        'assetSrc'  : './asset/',
+        'assetDest' : './public/asset/',
+    };
+
     return configs;
 };
