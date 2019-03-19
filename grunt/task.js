@@ -5,6 +5,7 @@ module.exports = grunt => {
 
     // Loads modules
     const module = {
+            'copy'  : 'grunt-contrib-copy',
             'sass'  : 'grunt-contrib-sass',
             'watch' : 'grunt-contrib-watch'
         };

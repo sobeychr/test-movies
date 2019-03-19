@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = grunt => {
+    const isDev = grunt.config.get('isDev');
+
     return {
         options: {
             dateFormat: (time) => {
@@ -9,9 +11,17 @@ module.exports = grunt => {
             }
         },
 
+        jsmin: {
+            files: [
+                '<%= config.assetSrc %>js/**/*.min.js',
+                '!<%= config.assetSrc %>js/**/*.min.backup.js',
+            ],
+            tasks: ['copy:jsmin']
+        },
+
         sass: {
             files: ['<%= config.assetSrc %>scss/**/*.scss'],
-            tasks: ['sass']
+            tasks: [isDev ? 'sass:dev' : 'sass:dist']
         }
     };
 };
