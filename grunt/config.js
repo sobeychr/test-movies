@@ -7,7 +7,7 @@ module.exports = grunt => {
     // Sets environment
     const availableEnvs = ['dev', 'stage', 'live'];
     const env = grunt.option('env') || 'dev';
-    grunt.log.writeln('> Running Grunt on', env['yellow']);
+    grunt.log.writeln('> Running Grunt on', env);
     if(availableEnvs.indexOf(env) < 0) {
         grunt.log.warn('Grunt must be run on', availableEnvs);
         grunt.fail.warn('Invalid Grunt environment', 1);

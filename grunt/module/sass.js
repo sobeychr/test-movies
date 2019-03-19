@@ -4,7 +4,10 @@ module.exports = grunt => {
     const files = [{
         expand: true,
         cwd:  '<%= config.assetSrc %>scss/',
-        src:  ['**/*.scss'],
+        src:  [
+            '**/*.scss',
+            '!**/*.backup.scss',
+        ],
         dest: '<%= config.assetDest %>css/',
         ext:  '.css'
     }];

@@ -1,7 +1,8 @@
 @extends('layouts.user')
 
 @section('asset')
-    
+    <script src='/asset/js/jquery.min.js'></script>
+    <script src='/asset/js/user.js'></script>
 @endsection
 
 @section('fullname')
