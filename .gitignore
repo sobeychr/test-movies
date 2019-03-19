@@ -1,6 +1,6 @@
+/grunt/.sass-cache
 /node_modules
-/public/asset/css
-/public/asset/js
+/public/asset
 /vendor
 /.idea
 Homestead.json
