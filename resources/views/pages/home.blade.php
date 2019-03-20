@@ -9,7 +9,7 @@
     <h1>home</h1>
 
     <nav>
-        <a href="{{$movieList}}">Movie List</a>
-        <a href="{{$userList}}">User List</a>
+        <a href="{{$movielist}}">Movie List</a>
+        <a href="{{$userlist}}">User List</a>
     </nav>
 @endsection

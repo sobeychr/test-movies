@@ -40,22 +40,22 @@ $router->get('/[home]', [
 
 // Movies
 $router->get('/movie', [
-    'as'   => 'movieList',
+    'as'   => 'movielist',
     'uses' => 'MovieController@showList',
 ]);
 
-$router->get('/movie/{movieId:\d+}[/{movieName:[a-z\-]+}]', [
+$router->get('/movie/{id:\d+}[/{name}]', [
     'as'   => 'movie',
-    'uses' => 'MovieController@showMovie',
+    'uses' => 'MovieController@showEntry',
 ]);
 
 // Users
 $router->get('/user', [
-    'as'   => 'userList',
+    'as'   => 'userlist',
     'uses' => 'UserController@showList',
 ]);
 
-$router->get('/user/{userId:\d+}[/{userName:[a-z\-]+}]', [
+$router->get('/user/{id:\d+}[/{name}]', [
     'as'   => 'user',
-    'uses' => 'UserController@showUser',
+    'uses' => 'UserController@showEntry',
 ]);

@@ -6,7 +6,7 @@
         <ul>
             @foreach($list as $entry)
                 <li>
-                    <a href="{{$entry['link']}}">{{$entry['name']}}</a>
+                    <a href="{{$entry->route}}">{{$entry->name}}</a>
                 </li>
             @endforeach
         </ul>
