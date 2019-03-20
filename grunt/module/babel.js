@@ -5,12 +5,12 @@ module.exports = grunt => {
         expand: true,
         cwd:  '<%= config.assetSrc %>js/',
         src:  [
-            '<%= config.assetSrc %>**/*.js',
-            '!<%= config.assetSrc %>**/*.backup.js',
-            '!<%= config.assetSrc %>**/*.min.js',
-            '!<%= config.assetSrc %>**/_*.js',
-            '!<%= config.assetSrc %>**/_*.min.js',
-            '!<%= config.assetSrc %>**/_*.min.backup.js',
+            '**/*.js',
+            '!**/*.backup.js',
+            '!**/*.min.js',
+            '!**/_*.js',
+            '!**/_*.min.js',
+            '!**/_*.min.backup.js',
         ],
         dest: '<%= config.assetDest %>js/',
         ext:  '.js'
