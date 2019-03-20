@@ -22,7 +22,7 @@ class PageController extends Controller
             return View('pages.404');
         }
 
-        if($entry->name !== $name) {
+        if($entry->nameRoute !== $name) {
             return redirect($entry->route);
         }
 

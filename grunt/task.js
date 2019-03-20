@@ -8,7 +8,8 @@ module.exports = grunt => {
             'babel' : 'grunt-babel',
             'copy'  : 'grunt-contrib-copy',
             'sass'  : 'grunt-contrib-sass',
-            'watch' : 'grunt-contrib-watch'
+            'uglify': 'grunt-contrib-uglify',
+            'watch' : 'grunt-contrib-watch',
         };
     for(let command in module)
     {

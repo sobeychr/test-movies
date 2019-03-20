@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Data\UserData;
-use Illuminate\View\View;
 
 class UserController extends PageController
 {

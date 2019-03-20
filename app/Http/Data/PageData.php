@@ -5,6 +5,8 @@ namespace App\Http\Data;
 abstract class PageData
 {
     protected $data = [];
+    protected $name = '';
+    protected $nameRoute = '';
     protected $id = 0;
     protected $route = '';
 

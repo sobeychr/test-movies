@@ -13,14 +13,14 @@ module.exports = grunt => {
 
         babel: {
             files: [
-                '**/*.js',
-                '**/_*.js',
-                '!**/*.backup.js',
-                '!**/*.min.js',
-                '!**/_*.min.js',
-                '!**/_*.min.backup.js',
+                '<%= config.assetSrc %>**/*.js',
+                '<%= config.assetSrc %>**/_*.js',
+                '!<%= config.assetSrc %>**/*.backup.js',
+                '!<%= config.assetSrc %>**/*.min.js',
+                '!<%= config.assetSrc %>**/_*.min.js',
+                '!<%= config.assetSrc %>**/_*.min.backup.js',
             ],
-            tasks: [isDev ? 'babel:dev' : 'babel:dist']
+            tasks: ['js']
         },
 
         jsmin: {
