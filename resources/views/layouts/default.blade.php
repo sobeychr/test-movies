@@ -1,5 +1,6 @@
 <html>
     <head>
+        <link rel='icon' href='/asset/image/favicon/favicon.png'>
         <title>@yield('title')</title>
         @yield('asset')
     </head>
