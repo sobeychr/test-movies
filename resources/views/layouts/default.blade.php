@@ -4,6 +4,14 @@
         @yield('asset')
     </head>
     <body>
-        @yield('body')
+        <aside>
+            @yield('aside')
+        </aside>
+        <main>
+            @yield('body')
+        </main>
+        <footer>
+            @yield('footer')
+        </footer>
     </body>
 </html>

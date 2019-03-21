@@ -1,8 +1,19 @@
 html, body {
-    background: #262626;
+    background: #191919;
+    font: normal 1em 'Arial', sans-serif;
     color: #DDD;
 }
 
+@import 'normalizer/title';
+@import 'normalizer/form';
+
 a {
-    color: #F00;
+    color: #34968C;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        color: #54CEC2;
+        text-decoration: underline;
+    }
 }
