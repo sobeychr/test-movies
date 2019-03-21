@@ -36,6 +36,8 @@ class PageController extends Controller
         $list = $this->loadFile();
         return View('pages.' . $this->viewList, [
             'list' => $list,
+            'movielist' => route('movielist'),
+            'userlist'  => route('userlist'),
         ]);
     }
 

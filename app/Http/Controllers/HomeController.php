@@ -8,10 +8,9 @@ class HomeController extends Controller
 {
     public function showHome():View
     {
-        $links = [
+        return view('pages.home', [
             'movielist' => route('movielist'),
             'userlist'  => route('userlist'),
-        ];
-        return view('pages.home', $links);
+        ]);
     }
 }

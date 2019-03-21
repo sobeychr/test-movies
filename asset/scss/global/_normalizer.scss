@@ -4,8 +4,8 @@ html, body {
     color: #DDD;
 }
 
-@import 'normalizer/title';
-@import 'normalizer/form';
+@import './normalizer/title';
+@import './normalizer/form';
 
 a {
     color: #34968C;
