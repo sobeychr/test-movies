@@ -6,6 +6,8 @@
     <script src='/asset/js/user.js'></script>
 @endsection
 
+@section('title', $entry->name)
+
 @section('body')
     <h1>
         <span class='title'>{{$entry->title}}</span>

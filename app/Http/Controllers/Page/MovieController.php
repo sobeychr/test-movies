@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Page;
 
+use App\Http\Controllers\Page\PageController;
 use App\Http\Data\MovieData;
 
 class MovieController extends PageController

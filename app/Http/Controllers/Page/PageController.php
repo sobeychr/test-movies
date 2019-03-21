@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Page;
 
 use App\Http\Data\PageData;
+use App\Http\Controllers\View\ViewController;
 use Illuminate\View\View;
 
-class PageController extends Controller
+class PageController extends ViewController
 {
     protected $data = [];
     protected $dataClass = false;
@@ -28,6 +29,7 @@ class PageController extends Controller
 
         return View('pages.' . $this->viewEntry, [
             'entry' => $entry,
+            'nav' => $this->getNav(),
         ]);
     }
    
@@ -36,8 +38,7 @@ class PageController extends Controller
         $list = $this->loadFile();
         return View('pages.' . $this->viewList, [
             'list' => $list,
-            'movielist' => route('movielist'),
-            'userlist'  => route('userlist'),
+            'nav'  => $this->getNav(),
         ]);
     }
 
@@ -47,7 +48,7 @@ class PageController extends Controller
         $filter = array_filter($data, function(PageData $entry) use ($id) {
             return $entry->id === $id;
         });
-        return $filter[0] ?? null;
+        return array_shift($filter);
     }
 
     protected function loadFile():array

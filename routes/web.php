@@ -33,29 +33,32 @@ $router->get('/test/users', [
 ]);
 
 // Actual routes
-$router->get('/[home]', [
-    'as'   => 'home',
-    'uses' => 'HomeController@showHome',
-]);
+$router->group(['namespace' => 'View'], function() use ($router) {
+    $router->get('/[home]', [
+        'as'   => 'home',
+        'uses' => 'HomeController@showHome',
+    ]);
+});
+
 
 // Movies
-$router->get('/movie', [
-    'as'   => 'movielist',
-    'uses' => 'MovieController@showList',
-]);
+$router->group(['namespace' => 'Page'], function() use ($router) {
+    $router->get('/movie', [
+        'as'   => 'movielist',
+        'uses' => 'MovieController@showList',
+    ]);
+    $router->get('/movie/{id:\d+}[/{name}]', [
+        'as'   => 'movie',
+        'uses' => 'MovieController@showEntry',
+    ]);
 
-$router->get('/movie/{id:\d+}[/{name}]', [
-    'as'   => 'movie',
-    'uses' => 'MovieController@showEntry',
-]);
-
-// Users
-$router->get('/user', [
-    'as'   => 'userlist',
-    'uses' => 'UserController@showList',
-]);
-
-$router->get('/user/{id:\d+}[/{name}]', [
-    'as'   => 'user',
-    'uses' => 'UserController@showEntry',
-]);
+    // Users
+    $router->get('/user', [
+        'as'   => 'userlist',
+        'uses' => 'UserController@showList',
+    ]);
+    $router->get('/user/{id:\d+}[/{name}]', [
+        'as'   => 'user',
+        'uses' => 'UserController@showEntry',
+    ]);
+});

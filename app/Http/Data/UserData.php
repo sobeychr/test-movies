@@ -36,6 +36,6 @@ class UserData extends PageData
         $this->rating = $this->data['rating'];
         $this->total  = $this->data['total'];
 
-        $this->route = '/user/' . $this->id . '/' . $this->name;
+        $this->route = '/user/' . $this->id . '/' . $this->nameRoute;
     }
 }
