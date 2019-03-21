@@ -3,8 +3,9 @@
 module.exports = grunt => {
     return {
         asset: [
-            '<%= config.assetDest %>/css/**/*',
-            '<%= config.assetDest %>/js/**/*',
+            '<%= config.assetDest %>css/**/*',
+            '<%= config.assetDest %>js/**/*',
+            '<%= config.assetDest %>image/**/*',
         ],
         sass: [
             './grunt/.sass-cache',

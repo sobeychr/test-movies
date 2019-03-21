@@ -14,11 +14,7 @@ module.exports = grunt => {
         babel: {
             files: [
                 '<%= config.assetSrc %>**/*.js',
-                '<%= config.assetSrc %>**/_*.js',
-                '!<%= config.assetSrc %>**/*.backup.js',
-                '!<%= config.assetSrc %>**/*.min.js',
-                '!<%= config.assetSrc %>**/_*.min.js',
-                '!<%= config.assetSrc %>**/_*.min.backup.js',
+                '!<%= config.assetSrc %>**/*.{backup,min,min.backup}.js',
             ],
             tasks: ['js']
         },

@@ -7,6 +7,7 @@ module.exports = grunt => {
     const tasks = [
         isDev ? 'sass:dev' : 'sass:dist',
         'js',
+        'copy:image',
     ];
 
     grunt.task.registerTask('asset', tasks);
