@@ -9,6 +9,24 @@ module.exports = grunt => {
     };
     grunt.config.set('leadingZeros', leadingZeros);
 
+    const dateString = (timestamp=-1) => {
+        if(timestamp < 0) {
+            timestamp = new Date().getTime();
+        }
+        const date = new Date(timestamp);
+        
+        return [
+            date.getFullYear(),
+            leadingZeros( date.getMonth()+1 ),
+            leadingZeros( date.getDate() ),
+        ].join('-') + ' ' + [
+            leadingZeros( date.getHours() ),
+            leadingZeros( date.getMinutes() ),
+            leadingZeros( date.getSeconds() ),
+        ].join(':');
+    };
+    grunt.config.set('dateString', dateString);
+
     const repaceAll = (string, search, replace) => {
         if(replace.indexOf(search) >= 0) {
             grunt.fail.warn('Endless -replaceAll()- function in motion with "'+search+'" => "'+replace+'"', 3);

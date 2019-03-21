@@ -2,6 +2,7 @@
 
 module.exports = grunt => {
 
+    const dateString = grunt.config.get('dateString');
     const leadingZeros = grunt.config.get('leadingZeros');
     const ucFirst = grunt.config.get('ucFirst');
 
@@ -19,15 +20,7 @@ module.exports = grunt => {
 
     // Sets date
     const date = new Date();
-    const dateStr = [
-        date.getFullYear(),
-        leadingZeros( date.getMonth()+1 ),
-        leadingZeros( date.getDate() ),
-    ].join('-') + ' ' + [
-        leadingZeros( date.getHours() ),
-        leadingZeros( date.getMinutes() ),
-        leadingZeros( date.getSeconds() ),
-    ].join(':');
+    const dateStr = dateString();
     grunt.config.set('date',    date);
     grunt.config.set('dateStr', dateStr);
 
