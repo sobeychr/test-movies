@@ -19,3 +19,10 @@ Built upon Lumen 5.8
 ## Run
 1. `npm run server`
 2. `http://test-movies:300/`
+3. `grunt asset` to build local assets
+  * `grunt watch` to auto-update assets when editing
+
+## Extra commands
+* `grunt` displays the list of available Grunt tasks
+* `grunt clean` to remove cache content; _usually GitIgnore_
+  * **Note:** this will remove local assets, run `grunt asset` again
