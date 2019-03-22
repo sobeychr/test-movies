@@ -4,6 +4,8 @@ namespace App\Http\Data;
 
 class MovieData extends PageData
 {
+    protected $direct = ['add', 'boxoffice', 'dissenter', 'release', 'trailer'];
+
     /*
     protected $data = [];
     protected $name = '';
@@ -20,5 +22,7 @@ class MovieData extends PageData
         $this->nameRoute = str_replace(' ', '-', $this->data['name']);
 
         $this->route = '/movie/' . $this->id . '/' . $this->nameRoute;
+
+        $this->releaseString = date('Y-m-d', $this->release);
     }
 }

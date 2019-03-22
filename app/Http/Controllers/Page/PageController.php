@@ -6,7 +6,7 @@ use App\Http\Data\PageData;
 use App\Http\Controllers\View\ViewController;
 use Illuminate\View\View;
 
-class PageController extends ViewController
+abstract class PageController extends ViewController
 {
     protected $data = [];
     protected $dataClass = false;
@@ -14,6 +14,8 @@ class PageController extends ViewController
 
     protected $viewEntry = '';
     protected $viewList  = '';
+
+    abstract protected function sortList($a, $b):int;
 
     public function showEntry(int $id, string $name='')
     {
@@ -36,6 +38,7 @@ class PageController extends ViewController
     public function showList():View
     {
         $list = $this->loadFile();
+        usort($list, [$this, 'sortList']);
         return View('pages.' . $this->viewList, [
             'list' => $list,
             'nav'  => $this->getNav(),

@@ -4,6 +4,8 @@ namespace App\Http\Data;
 
 abstract class PageData
 {
+    protected $direct = [];
+
     protected $data = [];
     protected $name = '';
     protected $nameRoute = '';
@@ -14,6 +16,11 @@ abstract class PageData
     {
         $this->data = $data;
         $this->id = $this->data['id'] ?? 0;
+
+        foreach($this->direct as $field)
+        {
+            $this->$field = $this->data[$field];
+        }
     }
 
     public function __get($prop) {

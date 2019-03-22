@@ -4,6 +4,8 @@ namespace App\Http\Data;
 
 class UserData extends PageData
 {
+    protected $direct = ['email', 'rating', 'total'];
+
     /*
     protected $data = [];
     protected $name = '';
@@ -24,17 +26,12 @@ class UserData extends PageData
     {
         parent::__construct($data);
 
-        $this->email = $this->data['email'] ?? '';
-
         $this->first = $this->data['name']['first'] ?? '';
         $this->last  = $this->data['name']['last']  ?? '';
         $this->title = $this->data['name']['title'] ?? '';
 
-        $this->nameRoute = $this->first . '-' . $this->last;
         $this->name = $this->title . ' ' . $this->first . ' ' . $this->last;
-
-        $this->rating = $this->data['rating'];
-        $this->total  = $this->data['total'];
+        $this->nameRoute = $this->first . '-' . $this->last;
 
         $this->route = '/user/' . $this->id . '/' . $this->nameRoute;
     }
