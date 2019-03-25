@@ -6,6 +6,7 @@ module.exports = grunt => {
 
     const tasks = [
         isDev ? 'sass:dev' : 'sass:dist',
+        'copy:jsmin',
         'js',
         'copy:image',
     ];
