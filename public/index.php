@@ -11,6 +11,8 @@
 |
 */
 
+if(!defined('ROOT_DIR')) define('ROOT_DIR', __DIR__ . '/../');
+
 $app = require __DIR__.'/../bootstrap/app.php';
 
 /*

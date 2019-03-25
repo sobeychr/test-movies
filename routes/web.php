@@ -40,9 +40,8 @@ $router->group(['namespace' => 'View'], function() use ($router) {
     ]);
 });
 
-
-// Movies
 $router->group(['namespace' => 'Page'], function() use ($router) {
+    // Movies
     $router->get('/movie', [
         'as'   => 'movielist',
         'uses' => 'MovieController@showList',

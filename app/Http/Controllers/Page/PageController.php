@@ -22,7 +22,8 @@ abstract class PageController extends ViewController
         $entry = $this->loadEntry($id);
 
         if(!$entry) {
-            return View('pages.404');
+            $view = View('pages.404');
+            return response($view, 404);
         }
 
         if($entry->nameRoute !== $name) {
@@ -57,7 +58,7 @@ abstract class PageController extends ViewController
     protected function loadFile():array
     {
         if(!$this->data) {
-            $jsonPath = './../database/json/' . $this->file . '.json';
+            $jsonPath = ROOT_DIR . 'database/json/' . $this->file . '.json';
             $jsonStr = file_get_contents($jsonPath);
             $jsonArr = json_decode($jsonStr, true);
             

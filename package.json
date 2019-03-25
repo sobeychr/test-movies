@@ -4,11 +4,13 @@
     "description": "Movie review test website. Post recently added movies, ratings, anticipation, open users... Built upon Lumen 5.8",
     "main": "index.js",
     "directories": {
+        "asset": "asset",
+        "grunt": "grunt",
         "test": "tests"
     },
     "scripts": {
         "server": "php -S test-movies:300 -t public -c php.ini",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "phpunit --configuration phpunit.xml --bootstrap vendor/autoload.php --testdox"
     },
     "repository": {
         "type": "git",
