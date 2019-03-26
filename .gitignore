@@ -1,4 +1,4 @@
-/database/migrations/*.bak
+/database/migrations/*.mwb.bak
 /grunt/.sass-cache
 /node_modules
 /public/asset

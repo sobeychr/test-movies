@@ -16,6 +16,14 @@ class TestController extends BaseController
         '?id=aladdin.htm',
     ];
 
+    protected const DB = 'test-movies';
+    protected const TABLES = [
+        'movie' => [
+            'name' => 'movie',
+            'fields' => ['name','add','release','boxoffice','trailer1','trailer2','trailer3'],
+        ],
+    ];
+
     protected const TRAILERS = ['8Nwj29zCxzI', 's9NIBZfVBW4', 'r5EXKDlf44M', 'PMl3i9WHmV4', 'Pxj6mjhmIjA', 'qHK5MC7yzf4', '_LE3ePdFXUw', 'TQkvAlP8fz8', '2jC5WAJzp34', 'vbqLfN092qw'];
 
     protected const DAY   = 60*60*24;
@@ -33,25 +41,18 @@ class TestController extends BaseController
         {
             $add = $this->getDate();
             $release = $this->getDate(true, $add);
-            $trailers = $this->getTrailers();
+            $trailers = $this->getMovieTrailers();
 
-            $entries[] = '(' . implode(',',
-                array_merge([
-                    '"' . $this->getName() . '"',
-                    $add,
-                    $release,
-                    '"' . $this->getBox() . '"',
-                ], $trailers)
-            ) . ')';
+            $entries[] = array_merge([
+                'name' => $this->getName(),
+                'add'  => $add,
+                'release' => $release,
+                'box' => $release,
+            ], $trailers);
         }
 
-        $query = 'INSERT INTO `db`.`movies` (`name`, `add`, `release`, `box`, `trailer1`, `trailer2`, `trailer3`)';
-        $query .= "\nVALUES\n";
-        $query .= implode(",\n", $entries);
-        $query .= "\n;";
-
-        //return '<pre>' . var_export($entry, true) . '</pre>';
-        return '<pre>' . $query . '</pre>';
+        return '<pre>' . $this->exportTable('movie', $entries) . '</pre>';
+        //return '<pre>' . print_r($entries, true) . '</pre>';
     }
 
     protected function getBox():string
@@ -69,6 +70,20 @@ class TestController extends BaseController
         return $time ? $this->roundDay($now) : $now;
     }
 
+    protected function getMovieTrailers():array
+    {
+        $total = 3;
+        $list  = [];
+        $amount = rand(1, 3);
+        for($i=1; $i<=$total; $i++)
+        {
+            $list['trailer' . $i] = $i <= $amount
+                ? self::TRAILERS[ array_rand(self::TRAILERS) ]
+                : '';
+        }
+        return $list;
+    }
+
     protected function getName(int $len=32):string
     {
         static $g_getName=-1;
@@ -80,23 +95,34 @@ class TestController extends BaseController
         return substr(self::TEXT, $start, $length);
     }
 
-    protected function getTrailers():array
+    protected function exportEntry(array $entry):string
     {
-        $total = 3;
-        $list  = [];
-        $amount = rand(1, 3);
-
-        for($i=0; $i<$amount; $i++)
+        $arr = [];
+        foreach($entry as $value)
         {
-            $list[] = '"' . self::TRAILERS[ array_rand(self::TRAILERS) ] . '"';
+            if(is_string($value)) {
+                $arr[] = '"' . $value . '"';
+            }
+            else {
+                $arr[] = $value;
+            }
         }
 
-        $remain = $total - count($list);
-        $list = array_merge(
-            $list,
-            array_fill(count($list), $remain, '""')
-        );
-        return $list;
+        return '(' . implode(',', $arr) . ')';
+    }
+
+    protected function exportTable(string $tablekey, array $entries):string
+    {
+        $table = self::TABLES[$tablekey];
+        $values = array_map([$this, 'exportEntry'], $entries);
+
+        $query = 'INSERT INTO `' . self::DB . '`.`' . $table['name'] . '`';
+        $query .= "\n(`" . implode('`,`', $table['fields']) . '`)';
+        $query .= "\n VALUES\n";
+        $query .= implode(",\n", $values);
+        $query .= "\n;";
+
+        return $query;
     }
 
     protected function roundDay(int $timestamp):int
