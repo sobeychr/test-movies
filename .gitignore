@@ -1,3 +1,4 @@
+/database/migrations/*.bak
 /grunt/.sass-cache
 /node_modules
 /public/asset
