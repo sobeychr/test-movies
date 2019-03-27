@@ -11,11 +11,18 @@ class TestController extends BaseController
     protected const TABLES = [
         'movie' => [
             'name' => 'movie',
-            'fields' => ['name','add','release','boxoffice','trailer1','trailer2','trailer3'],
+            'fields' => [
+                'name','created','updated',
+                'release','deleted','boxoffice',
+                'trailer1','trailer2','trailer3',
+            ],
         ],
         'user' => [
             'name' => 'user',
-            'fields' => ['name','gender','email','created'],
+            'fields' => [
+                'name','gender','email',
+                'created','updated','deleted',
+            ],
         ],
     ];
 
@@ -51,10 +58,15 @@ class TestController extends BaseController
             $trailers = $this->getMovieTrailers();
 
             $entries[] = array_merge([
+                //'name','created','updated',
+                //'release','deleted','boxoffice',
+                //'trailer1','trailer2','trailer3',
+                
                 'name' => $this->getName(),
-                'add'  => $add,
                 'release' => $release,
-                'box' => $release,
+                'created'  => $add,
+                'boxoffice' => $this->getBox(),
+                'updated'  => $add,
             ], $trailers);
         }
 
@@ -84,11 +96,13 @@ class TestController extends BaseController
 
         for($i=0; $i<$total; $i++)
         {
+            $date = $this->getDate();
             $entries[] = [
                 'name'    => $this->getName(20),
                 'gender'  => rand(0,1),
                 'email'   => $this->getEmail(),
-                'created' => $this->getDate(),
+                'created' => $date,
+                'updated' => $date,
             ];
         }
 
@@ -164,7 +178,26 @@ class TestController extends BaseController
     protected function exportTable(string $tablekey, array $entries):string
     {
         $table = self::TABLES[$tablekey];
-        $values = array_map([$this, 'exportEntry'], $entries);
+        $values = [];
+        //$values = array_map([$this, 'exportEntry'], $entries);
+        foreach($entries as $entry)
+        {
+            $v = [];
+            foreach($table['fields'] as $field)
+            {
+                $val = $entry[$field] ?? NULL;
+
+                if(is_string($val)) {
+                    $val = '"' . $val . '"';
+                }
+                elseif($val === NULL) {
+                    $val = 'NULL';
+                }
+
+                $v[$field] = $val;
+            }
+            $values[] = '(' . implode(',', array_values($v)) . ')';
+        }
 
         $query = 'INSERT INTO `' . self::DB . '`.`' . $table['name'] . '`';
         $query .= "\n(`" . implode('`,`', $table['fields']) . '`)';

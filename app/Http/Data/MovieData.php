@@ -14,14 +14,4 @@ class MovieData extends Model
     protected $connection = 'mysql';
     protected $dateFormat = 'U';
     protected $table = 'movie';
-    /*
-    public function getName():string { return $this->attributes['name']; }
-    public function getAdd(bool $asDateStr)
-    {
-        if($asDateStr) {
-            return date(DATE_STR, $this->attributes['add']);
-        }
-        return $this->attributes['add'];
-    }
-    */
 }

@@ -20,8 +20,10 @@ USE `test-movies` ;
 CREATE TABLE IF NOT EXISTS `test-movies`.`movie` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(32) NOT NULL,
-  `add` INT(13) NOT NULL,
+  `created` INT(13) NOT NULL,
+  `updated` INT(13) NOT NULL,
   `release` INT(13) NULL,
+  `deleted` INT(13) NULL,
   `boxoffice` VARCHAR(32) NULL,
   `trailer1` VARCHAR(12) NULL,
   `trailer2` VARCHAR(12) NULL,
@@ -40,6 +42,8 @@ CREATE TABLE IF NOT EXISTS `test-movies`.`user` (
   `gender` INT(1) NOT NULL DEFAULT 0 COMMENT '0=male, 1=female',
   `email` VARCHAR(32) NOT NULL,
   `created` INT(13) NOT NULL,
+  `updated` INT(13) NOT NULL,
+  `deleted` INT(13) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
