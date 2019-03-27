@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Data\MovieData;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class TestController extends BaseController
@@ -58,6 +59,22 @@ class TestController extends BaseController
         }
 
         return '<pre>' . $this->exportTable('movie', $entries) . '</pre>';
+    }
+
+    public function generateRates():string
+    {
+        $now = time();
+
+        //$movies = MovieData::where('release', '>', $now);
+        $movies = MovieData::all();
+
+        $ttt = [];
+        foreach($movies as $entry)
+        {
+            $ttt[] = $entry->name;
+        }
+
+        return '<pre>'.print_r($ttt,true).'</pre>';
     }
 
     public function generateUsers():string

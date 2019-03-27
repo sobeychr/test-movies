@@ -2,27 +2,26 @@
 
 namespace App\Http\Data;
 
-class MovieData extends PageData
+use Illuminate\Database\Eloquent\Model;
+
+class MovieData extends Model
 {
-    protected $direct = ['add', 'boxoffice', 'dissenter', 'release', 'trailer'];
+    const CREATED_AT = 'add';
+    const DATE_STR = 'Y-m-d H:i:s';
 
+    public $timestamps = false;
+
+    protected $connection = 'mysql';
+    protected $dateFormat = 'U';
+    protected $table = 'movie';
     /*
-    protected $data = [];
-    protected $name = '';
-    protected $nameRoute = '';
-    protected $id = 0;
-    protected $route = '';
-    */
-    
-    public function __construct(array $data)
+    public function getName():string { return $this->attributes['name']; }
+    public function getAdd(bool $asDateStr)
     {
-        parent::__construct($data);
-
-        $this->name = $this->data['name'];
-        $this->nameRoute = str_replace(' ', '-', $this->data['name']);
-
-        $this->route = '/movie/' . $this->id . '/' . $this->nameRoute;
-
-        $this->releaseString = date('Y-m-d', $this->release);
+        if($asDateStr) {
+            return date(DATE_STR, $this->attributes['add']);
+        }
+        return $this->attributes['add'];
     }
+    */
 }
