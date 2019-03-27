@@ -16,24 +16,19 @@ $router->get('/test', function () use ($router) {
     return $router->app->version();
 });
 
+$router->get('/test/users', [
+    'uses' => 'TestController@generateUsers',
+]);
 $router->get('/test/movies', [
     'uses' => 'TestController@generateMovies',
 ]);
+
 /*
 $router->get('/test/anticipations', [
     'uses' => 'TestController@generateAnticipations',
 ]);
-
-$router->get('/test/movies', [
-    'uses' => 'TestController@generateMovies',
-]);
-
 $router->get('/test/rates', [
     'uses' => 'TestController@generateRates',
-]);
-
-$router->get('/test/users', [
-    'uses' => 'TestController@generateUsers',
 ]);
 */
 
