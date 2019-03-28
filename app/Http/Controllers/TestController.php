@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Data\MovieData;
+use App\Http\Data\UserData;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class TestController extends BaseController
@@ -58,15 +59,11 @@ class TestController extends BaseController
             $trailers = $this->getMovieTrailers();
 
             $entries[] = array_merge([
-                //'name','created','updated',
-                //'release','deleted','boxoffice',
-                //'trailer1','trailer2','trailer3',
-                
                 'name' => $this->getName(),
-                'release' => $release,
                 'created'  => $add,
-                'boxoffice' => $this->getBox(),
                 'updated'  => $add,
+                'release' => $release,
+                'boxoffice' => $this->getBox(),
             ], $trailers);
         }
 
@@ -75,18 +72,26 @@ class TestController extends BaseController
 
     public function generateRates():string
     {
-        $now = time();
+        $now = strtotime('2019-03-28 12:00:00');
+        $d = 'Y-m-d H:i:s';
 
-        //$movies = MovieData::where('release', '>', $now);
+        $users = UserData::all();
         $movies = MovieData::all();
 
         $ttt = [];
+        //foreach($users as $entry)
         foreach($movies as $entry)
         {
-            $ttt[] = $entry->name;
+            $ttt[] = implode("\n",[
+                $entry->id,
+                $entry->name,
+                date($d, $entry->created),
+                date($d, $entry->release),
+                $entry->hasRate() ? 'on-rate' : 'off-rate',
+            ]);
         }
 
-        return '<pre>'.print_r($ttt,true).'</pre>';
+        return $now . ' - ' . date($d, $now) . '<pre>'.print_r($ttt,true).'</pre>';
     }
 
     public function generateUsers():string
@@ -157,6 +162,12 @@ class TestController extends BaseController
         $length = rand(3, $len);
         $start  = rand(0, $g_getName - $length);
         return substr(self::TEXT, $start, $length);
+    }
+
+    protected function getRandomChunk(array $list, int $size=10):array
+    {
+        shuffle($list);
+        return array_chunk($list, min(count($list), $size));
     }
 
     protected function exportEntry(array $entry):string

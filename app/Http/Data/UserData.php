@@ -2,37 +2,33 @@
 
 namespace App\Http\Data;
 
-class UserData extends PageData
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class UserData extends Model
 {
-    protected $direct = ['email', 'rating', 'total'];
+    use SoftDeletes;
 
-    /*
-    protected $data = [];
-    protected $name = '';
-    protected $nameRoute = '';
-    protected $id = 0;
-    protected $route = '';
-    */
-    
-    protected $email = '';
+    const CREATED_AT = 'created';
+    const DELETED_AT = 'deleted';
+    const UPDATED_AT = 'updated';
 
-    protected $first = '';
-    protected $last  = '';
-    protected $title = '';
+    public $timestamps = false;
 
-    protected $rating = 0;
+    //protected $connection = 'mysql';
+    protected $dateFormat = 'U';
+    protected $primaryKey = 'id';
+    protected $table = 'user';
 
-    public function __construct(array $data)
-    {
-        parent::__construct($data);
-
-        $this->first = $this->data['name']['first'] ?? '';
-        $this->last  = $this->data['name']['last']  ?? '';
-        $this->title = $this->data['name']['title'] ?? '';
-
-        $this->name = $this->title . ' ' . $this->first . ' ' . $this->last;
-        $this->nameRoute = $this->first . '-' . $this->last;
-
-        $this->route = '/user/' . $this->id . '/' . $this->nameRoute;
-    }
+    protected $attributes = [
+        /*
+        'id'   => 0,
+        'name' => string,
+        'gender' => bool,
+        'email'  => string,
+        'created' => timestamp,
+        'updated' => timestamp,
+        'deleted' => timestamp
+        */
+    ];
 }
