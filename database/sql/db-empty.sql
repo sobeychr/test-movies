@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `test-movies`.`rating` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `movie` INT NOT NULL,
   `user` INT NOT NULL,
-  `rate` DECIMAL(3) NOT NULL,
+  `rate` INT(3) NOT NULL,
   `date` INT(13) NOT NULL,
   PRIMARY KEY (`id`, `movie`, `user`),
   UNIQUE INDEX `idrating_UNIQUE` (`id` ASC))
