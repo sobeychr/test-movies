@@ -34,7 +34,7 @@ class MovieData extends Model
         'created' => timestamp,
         'updated' => timestamp,
         'release' => timestamp rounded to day,
-        'deleted' => timestamp,
+        'deleted' => timestamp OR 0,
         'boxoffice' => string link
         'trailer1' => string YouTube ID,
         'trailer2' => string YouTube ID,
@@ -42,12 +42,10 @@ class MovieData extends Model
         */
     ];
 
-    private $now = 0;
-
     public function isDeleted():bool
     {
         return $this->attributes['deleted'] > 0
-            && $this->attributes['deleted'] < $this->getNow();
+            && $this->attributes['deleted'] < NOW;
     }
 
     public function hasAnticipation():bool
@@ -68,20 +66,18 @@ class MovieData extends Model
             );
     }
 
-    protected function getNow():int
-    {
-        if(!$this->now) {
-            $date = new \DateTime();
-            $this->now = $date->getTimestamp();
-        }
-        return $this->now;
-    }
-
     protected function isInTimeFrame(string $start, string $end):bool
     {
         $ts = $this->attributes['release'];
         $st = strtotime($start, $ts);
         $et = strtotime($end,   $ts);
-        return $st <= $this->getNow() && $this->getNow() <= $et;
+        return $st <= NOW && NOW <= $et;
     }
 }
+/*
+<a href='{{$entry->route}}'>
+    <span class='id'>{{$entry->id}}</span>
+    <span class='name'>{{$entry->name}}</span>
+    <span class='release'>{{$entry->releaseString}}</span>
+</a>
+*/

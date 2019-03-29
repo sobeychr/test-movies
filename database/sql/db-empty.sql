@@ -76,9 +76,9 @@ CREATE TABLE IF NOT EXISTS `test-movies`.`anticipation` (
   UNIQUE INDEX `idanticipation_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
 
-CREATE USER 'ttMovies' IDENTIFIED BY 'Fran9150,';
+-- CREATE USER 'ttMovies' IDENTIFIED BY 'Fran9150,';
 
-GRANT ALL ON `test-movies`.* TO 'ttMovies';
+-- GRANT ALL ON `test-movies`.* TO 'ttMovies';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

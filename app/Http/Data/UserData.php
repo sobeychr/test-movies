@@ -31,4 +31,17 @@ class UserData extends Model
         'deleted' => timestamp
         */
     ];
+
+    public function isDeleted():bool
+    {
+        return $this->attributes['deleted'] > 0
+            && $this->attributes['deleted'] < NOW;
+    }
 }
+
+/*
+<a href='{{$entry->route}}'>
+    <span class='id'>{{$entry->id}}</span>
+    <span class='name'>{{$entry->name}}</span>
+</a>
+*/

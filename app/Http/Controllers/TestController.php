@@ -105,6 +105,7 @@ class TestController extends BaseController
                 'name' => $this->getName(),
                 'created'  => $add,
                 'updated'  => $add,
+                //'deleted'  => 0,
                 'release' => $release,
                 'boxoffice' => $this->getBox(),
             ], $trailers);
@@ -162,6 +163,7 @@ class TestController extends BaseController
                 'email'   => $this->getEmail(),
                 'created' => $date,
                 'updated' => $date,
+                //'deleted' => 0,
             ];
         }
 

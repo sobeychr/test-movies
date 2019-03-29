@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers\Page;
 
-use App\Http\Data\PageData;
+use App\Http\Data\MovieData;
 use App\Http\Controllers\View\ViewController;
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
 abstract class PageController extends ViewController
 {
-    protected $data = [];
     protected $dataClass = false;
-    protected $file = '';
+
+    protected $sort = ['id'];
 
     protected $viewEntry = '';
     protected $viewList  = '';
 
-    abstract protected function sortList($a, $b):int;
-
     public function showEntry(int $id, string $name='')
     {
+        /*
         $entry = $this->loadEntry($id);
 
         if(!$entry) {
@@ -34,41 +34,21 @@ abstract class PageController extends ViewController
             'entry' => $entry,
             'nav' => $this->getNav(),
         ]);
+        */
     }
    
-    public function showList():View
+    public function showList():string
     {
-        $list = $this->loadFile();
-        usort($list, [$this, 'sortList']);
-        return View('pages.' . $this->viewList, [
-            'list' => $list,
-            'nav'  => $this->getNav(),
-        ]);
-    }
-
-    protected function loadEntry(int $id)
-    {
-        $data = $this->loadFile();
-        $filter = array_filter($data, function(PageData $entry) use ($id) {
-            return $entry->id === $id;
-        });
-        return array_shift($filter);
-    }
-
-    protected function loadFile():array
-    {
-        if(!$this->data) {
-            $jsonPath = ROOT_DIR . 'database/json/' . $this->file . '.json';
-            $jsonStr = file_get_contents($jsonPath);
-            $jsonArr = json_decode($jsonStr, true);
-            
-            $list = [];
-            foreach($jsonArr as $entry)
-            {
-                $list[] = new $this->dataClass($entry);
-            }
-            $this->data = $list;
+        $cmd = [];
+        foreach($this->sort as $field)
+        {
+            $cmd[] = 'orderBy("'.$field.'")';
         }
-        return $this->data;
+        eval('$list = $this->dataClass::' . implode('->', $cmd) . ';');
+        return View('pages.' . $this->viewList, [
+            'type' => $this->viewType,
+            'list' => $list->get(),
+            'nav' => $this->getNav(),
+        ]);
     }
 }
