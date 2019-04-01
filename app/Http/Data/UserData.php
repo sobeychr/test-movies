@@ -2,22 +2,9 @@
 
 namespace App\Http\Data;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
-class UserData extends Model
+class UserData extends PageData
 {
-    use SoftDeletes;
-
-    const CREATED_AT = 'created';
-    const DELETED_AT = 'deleted';
-    const UPDATED_AT = 'updated';
-
-    public $timestamps = false;
-
-    //protected $connection = 'mysql';
-    protected $dateFormat = 'U';
-    protected $primaryKey = 'id';
+    protected $route = 'user';
     protected $table = 'user';
 
     protected $attributes = [
@@ -31,12 +18,6 @@ class UserData extends Model
         'deleted' => timestamp
         */
     ];
-
-    public function isDeleted():bool
-    {
-        return $this->attributes['deleted'] > 0
-            && $this->attributes['deleted'] < NOW;
-    }
 }
 
 /*

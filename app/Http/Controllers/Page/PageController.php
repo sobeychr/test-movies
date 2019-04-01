@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Page;
 
 use App\Http\Data\MovieData;
 use App\Http\Controllers\View\ViewController;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
@@ -18,23 +19,23 @@ abstract class PageController extends ViewController
 
     public function showEntry(int $id, string $name='')
     {
-        /*
-        $entry = $this->loadEntry($id);
-
-        if(!$entry) {
+        try {
+            $entry = $this->dataClass::where('id', $id)->firstOrFail();
+        }
+        catch(ModelNotFoundException $exception) {
             $view = View('pages.404');
             return response($view, 404);
         }
 
-        if($entry->nameRoute !== $name) {
-            return redirect($entry->route);
+        $route = $entry->getRoute();
+        if(!$name || strpos($route, $name) === false) {
+            return redirect($route);
         }
-
+        
         return View('pages.' . $this->viewEntry, [
             'entry' => $entry,
             'nav' => $this->getNav(),
         ]);
-        */
     }
    
     public function showList():string
@@ -45,6 +46,7 @@ abstract class PageController extends ViewController
             $cmd[] = 'orderBy("'.$field.'")';
         }
         eval('$list = $this->dataClass::' . implode('->', $cmd) . ';');
+
         return View('pages.' . $this->viewList, [
             'type' => $this->viewType,
             'list' => $list->get(),
