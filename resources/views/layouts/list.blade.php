@@ -8,7 +8,7 @@
     <h1>@yield('type') List</h1>
     <nav>
         <ul>
-            @yield('loop')
+            @each($component, $list, 'entry')
         </ul>
     </nav>
 @endsection
