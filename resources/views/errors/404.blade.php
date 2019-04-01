@@ -1,15 +1,13 @@
-@extends('layouts.default')
+@extends('layouts.error')
 
-@section('asset')
-    <link rel='stylesheet' type='text/css' href='/asset/css/404.css'>
-@endsection
+@isset($title)
+    @section('title', $title)
+@else
+    @section('title', '404')
+@endif
 
-@section('title', '404')
-
-@section('body')
-    @isset($viewtype)
-        <h1>{{$viewType}} not found</h1>
-    @else
-        <h1>page not found</h1>
-    @endisset
-@endsection
+@isset($description)
+    @section('description', $description)
+@else
+    @section('description', 'Page not found')
+@endif

@@ -25,7 +25,8 @@ abstract class PageController extends BaseController
         }
         catch(ModelNotFoundException $exception) {
             $view = View('errors.404', [
-                'viewType' => $this->viewType,
+                'title' => $this->viewType . ' not found',
+                'description' => $this->viewType . ' not found',
             ]);
             return response($view, 404);
         }

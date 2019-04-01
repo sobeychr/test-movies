@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('asset')
-    <link rel='stylesheet' type='text/css' href='/asset/css/list.css'>
+    <link rel='stylesheet' type='text/css' href='/asset/css/error.css'>
 @endsection
 
 @section('title', 'error')
