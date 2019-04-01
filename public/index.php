@@ -11,8 +11,7 @@
 |
 */
 
-$date = new \DateTime();
-if(!defined('NOW')) define('NOW', $date->getTimestamp());
+if(!defined('NOW')) define('NOW', time());
 if(!defined('ROOT_DIR')) define('ROOT_DIR', __DIR__ . '/../');
 
 $app = require __DIR__.'/../bootstrap/app.php';

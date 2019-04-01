@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -45,6 +47,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // HTTP errors
+        if(method_exists($exception, 'getStatusCode')) {
+            $status = $exception->getStatusCode();
+            if($view = View('errors.' . $status)) {
+                return $view;
+            }
+        }
+
         return parent::render($request, $exception);
     }
 }

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Page;
 
 use App\Http\Data\MovieData;
-use App\Http\Controllers\View\ViewController;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
+use Laravel\Lumen\Routing\Controller as BaseController;
 
-abstract class PageController extends ViewController
+abstract class PageController extends BaseController
 {
     protected $dataClass = false;
 
@@ -16,6 +16,7 @@ abstract class PageController extends ViewController
 
     protected $viewEntry = '';
     protected $viewList  = '';
+    protected $viewType  = '';
 
     public function showEntry(int $id, string $name='')
     {
@@ -23,7 +24,9 @@ abstract class PageController extends ViewController
             $entry = $this->dataClass::where('id', $id)->firstOrFail();
         }
         catch(ModelNotFoundException $exception) {
-            $view = View('pages.404');
+            $view = View('errors.404', [
+                'viewType' => $this->viewType,
+            ]);
             return response($view, 404);
         }
 
@@ -34,7 +37,6 @@ abstract class PageController extends ViewController
         
         return View('pages.' . $this->viewEntry, [
             'entry' => $entry,
-            'nav' => $this->getNav(),
         ]);
     }
    
@@ -50,7 +52,6 @@ abstract class PageController extends ViewController
         return View('pages.' . $this->viewList, [
             'type' => $this->viewType,
             'list' => $list->get(),
-            'nav' => $this->getNav(),
         ]);
     }
 }

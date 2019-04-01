@@ -7,5 +7,9 @@
 @section('title', '404')
 
 @section('body')
-    <h1>page not found</h1>
+    @isset($viewtype)
+        <h1>{{$viewType}} not found</h1>
+    @else
+        <h1>page not found</h1>
+    @endisset
 @endsection

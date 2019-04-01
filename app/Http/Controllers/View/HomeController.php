@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\View;
 
-use App\Http\Controllers\View\ViewController;
+use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\View\View;
 
-class HomeController extends ViewController
+class HomeController extends BaseController
 {
     public function showHome():View
     {
-        return View('pages.home', [
-            'nav' => $this->getNav(),
-        ]);
+        return View('pages.home');
     }
 }
