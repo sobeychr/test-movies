@@ -5,7 +5,7 @@
 @endsection
 
 @section('body')
-    <h1>@yield('type') List</h1>
+    <h2>@yield('type') List</h2>
     <nav>
         <ul>
             @each($component, $list, 'entry')

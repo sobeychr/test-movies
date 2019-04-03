@@ -6,10 +6,6 @@
 
 @section('title', 'Home')
 
-@section('body')
-    
-@endsection
+@section('body')@endsection
 
-@section('footer')
-
-@endsection
+@section('footer')@endsection
