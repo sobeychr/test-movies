@@ -1,4 +1,4 @@
-require('global/_collapse');
+require('@global/_collapse');
 
 (function(win, $, doc, undefined) {
     'use strict';

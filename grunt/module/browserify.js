@@ -8,7 +8,7 @@ module.exports = grunt => {
                     'remapify', [
                         {
                             src: '**/*.js',
-                            expose: 'global',
+                            expose: '@global',
                             cwd: '<%= config.assetSrc %>js/global'
                         }
                     ]
@@ -23,10 +23,17 @@ module.exports = grunt => {
             ]
         },
         dist: {
-            src: [
-                '<%= config.assetSrc %>js/movie.js',
-            ],
-            dest: '<%= config.assetDest %>js/movie.js'
+            files: [{
+                expand: true,
+                cwd:  '<%= config.assetSrc %>js/',
+                src:  [
+                    '**/*.js',
+                    '!**/_*.js',
+                    '!**/*.backup.js',
+                ],
+                dest: '<%= config.assetDest %>js/',
+                ext:  '.js'
+            }]
         }
     };
 };
