@@ -1,30 +1,26 @@
 'use strict';
 
 module.exports = grunt => {
-    const presets   = ['@babel/preset-env'];
-    const babelify  = ['babelify', { presets }];
-    const transform = [ babelify ];
-
-    const remapify = [
-        'remapify', [{
-            src: ['<%= config.assetSrc %>js/global/**/*.js'],
-            expose: 'global',
-            cwd: __dirname
-        }]
-    ];
-
     return {
         options: {
             plugin: [
                 [
-                    'remapify', [{
-                        src: '<%= config.assetSrc %>js/global/**/*.js',
-                        expose: 'global',
-                        cwd: __dirname
-                    }]
+                    'remapify', [
+                        {
+                            src: '**/*.js',
+                            expose: 'global',
+                            cwd: '<%= config.assetSrc %>js/global'
+                        }
+                    ]
                 ]
             ],
-            transform
+            transform: [
+                [
+                    'babelify', {
+                        presets: ['@babel/preset-env']
+                    }
+                ]
+            ]
         },
         dist: {
             src: [
