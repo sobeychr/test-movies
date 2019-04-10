@@ -15,6 +15,7 @@ module.exports = grunt => {
     return {
         options: {
             cacheLocation: './grunt/.sass-cache',
+            debugInfo: false,
             loadPath: '<%= config.assetSrc %>scss/global/',
             precision: 3,
             unixNewlines: true
@@ -23,7 +24,6 @@ module.exports = grunt => {
         dev: {
             files,
             options: {
-                debugInfo: true,
                 sourcemap: 'file',
                 style: 'expanded'
             }
@@ -32,7 +32,6 @@ module.exports = grunt => {
         dist: {
             files,
             options: {
-                debugInfo: false,
                 sourcemap: 'none',
                 style: 'compressed'
             }
