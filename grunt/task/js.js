@@ -5,7 +5,7 @@ module.exports = grunt => {
     const isDev = grunt.config.get('isDev');
 
     const tasks = [
-        isDev ? 'babel:dev' : 'babel:dist',
+        'browserify'
     ];
     if(!isDev) {
         tasks.push('uglify');

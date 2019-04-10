@@ -1,5 +1,6 @@
-// require('global/_collapse');
+//require('global/_collapse.js');
 
+/*
 (function(win, $, doc, undefined) {
     'use strict';
 
@@ -69,6 +70,7 @@
     });
 
 }(window, jQuery, document));
+*/
 
 (function(win, $, doc, undefined) {
     'use strict';

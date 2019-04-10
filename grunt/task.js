@@ -5,7 +5,8 @@ module.exports = grunt => {
 
     // Loads modules
     const module = {
-            'babel' : 'grunt-babel',
+            //'babel' : 'grunt-babel',
+            'browserify' : 'grunt-browserify',
             'clean' : 'grunt-contrib-clean',
             'copy'  : 'grunt-contrib-copy',
             'sass'  : 'grunt-contrib-sass',
