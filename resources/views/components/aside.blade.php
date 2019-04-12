@@ -33,12 +33,21 @@
     }
 @endphp
 
-<nav>
-    @foreach($links as $name => $path)
-        @if($path)
-            <a href="{{$path}}">{{$name}}</a>
-        @else
-            <span>{{$name}}</span>
-        @endif
-    @endforeach
-</nav>
+<aside>
+    <h1>@yield('title')</h1>
+
+    <span class='nav-icon'>
+        <i class='fas fa-bars'></i>
+    </span>
+
+    <nav class='nav-menu'>
+        @foreach($links as $name => $path)
+            @if($path)
+                <a href='{{$path}}'>{{$name}}</a>
+            @else
+                <span>{{$name}}</span>
+            @endif
+        @endforeach
+    </nav>
+</aside>
+<div class='nav-blocker'></div>

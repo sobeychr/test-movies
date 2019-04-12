@@ -2,13 +2,11 @@
     <head>
         <link rel='icon' href='/asset/image/favicon/favicon.png'>
         <title>@yield('title')</title>
-        @yield('asset')
+        @component('components.assets')@endcomponent
     </head>
     <body>
-        <aside>
-            <h1>@yield('title')</h1>
-            @component('components.nav')@endcomponent
-        </aside>
+        @component('components.aside')@endcomponent
+        
         <main>
             @yield('body')
         </main>

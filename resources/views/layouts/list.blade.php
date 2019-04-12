@@ -1,8 +1,6 @@
 @extends('layouts.default')
 
-@section('asset')
-    <link rel='stylesheet' type='text/css' href='/asset/css/list.css'>
-@endsection
+@section('page', 'list')
 
 @section('body')
     <h2>@yield('type') List</h2>
@@ -11,4 +9,8 @@
             @each($component, $list, 'entry')
         </ul>
     </nav>
+@endsection
+
+@section('footer')
+    <h3>footer</h3>
 @endsection

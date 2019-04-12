@@ -1,0 +1,11 @@
+@mixin mMobile() {
+    @media (max-width: ($minPc - 1)) {
+        @content;
+    }
+}
+
+@mixin mPc() {
+    @media (min-width: $minPc) {
+        @content;
+    }
+}

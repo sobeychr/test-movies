@@ -1,3 +1,6 @@
+$naxIconLeft: 20px;
+$navIconTop: 28px;
+
 aside {
     background: #191919;
     box-shadow: 0 0 3px 3px rgba(255,255,255, 0.5);
@@ -6,57 +9,110 @@ aside {
     position: fixed;
     top: 0;
 
-    @media (min-width: $minPc) {
+    @include mMobile {
+        height: 50px;
+        width: 100%;
+        z-index: 9001;
+    }
+    @include mPc {
         height: 100%;
         width: 200px;
     }
-    @media (max-width: ($minPc - 1)) {
-        height: 50px;
-        width: 100%;
-    }
 
     h1 {
-        margin-bottom: 30px;
         text-align: center;
+
+        @include mPc {
+            margin-bottom: 30px;
+        }
     }
 
-    a, span {
-        display: block;
-        padding: 3px 0;
+    .nav-icon {
+        cursor: pointer;
+        font-size: $navIconTop;
+        left: $naxIconLeft * -1;
+        padding: $naxIconLeft;
         position: relative;
-        text-indent: 15px;
+        top: $navIconTop * -1;
 
-        &:before {
-            background: #54CEC2;
-            content: '';
-            display: block;
-            height: 100%;
-            left: 0;
-            opacity: 0;
-            position: absolute;
-            transition: opacity .2s linear, background .2s linear;
-            top: 0;
-            width: 10px;
+        @include mPc {
+            display: none;
         }
+    }
 
-        &:hover {
-            &:before {
-                opacity: 1;
+    .nav-menu {
+        @include mMobile {
+            background: #191919;
+            box-shadow: 0 0 3px 3px rgba(255,255,255, 0.5);
+            left: -230px;
+            padding: 10px;
+            position: fixed;
+            transition: left .2s linear;
+            top: 90px;
+            width: 200px;
+
+            &.nav-menu--show {
+                left: 0;
             }
         }
 
-        &:nth-child(n + 2) {
-            margin-top: 15px;
+        a, span {
+            display: block;
+            padding: 3px 0;
+            position: relative;
+            text-indent: 15px;
+
+            &:before {
+                background: #54CEC2;
+                content: '';
+                display: block;
+                height: 100%;
+                left: 0;
+                opacity: 0;
+                position: absolute;
+                transition: opacity .2s linear, background .2s linear;
+                top: 0;
+                width: 10px;
+            }
+
+            &:hover {
+                &:before {
+                    opacity: 1;
+                }
+            }
+
+            &:nth-child(n + 2) {
+                margin-top: 15px;
+            }
+        }
+
+        span {
+            color: #2b9ee5;
+            pointer-events: none;
+
+            &:before {
+                background: #2b9ee5;
+                opacity: 1;
+            }
         }
     }
+}
 
-    span {
-        color: #2b9ee5;
-        pointer-events: none;
+.nav-blocker {
+    background: rgba(0,0,0, 0.5);
+    cursor: pointer;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 9000;
 
-        &:before {
-            background: #2b9ee5;
-            opacity: 1;
-        }
+    @include mPc {
+        display: none;
+    }
+
+    &:not(.nav-blocker--show) {
+        display: none;
     }
 }

@@ -1,11 +1,6 @@
 @extends('layouts.default')
 
-@section('asset')
-    <link rel='stylesheet' type='text/css' href='/asset/css/movie.css'>
-    <link rel='stylesheet' type='text/css' href='/asset/css/fontawesome.min.css'>
-    <script src='/asset/js/jquery.min.js'></script>
-    <script src='/asset/js/movie.js'></script>
-@endsection
+@section('page', 'movie')
 
 @section('title', $entry->name)
 
@@ -25,4 +20,8 @@
             </div>
         </article>
     </section>
+@endsection
+
+@section('footer')
+    <h3>footer</h3>
 @endsection

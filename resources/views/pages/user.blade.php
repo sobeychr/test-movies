@@ -1,10 +1,6 @@
 @extends('layouts.default')
 
-@section('asset')
-    <link rel='stylesheet' type='text/css' href='/asset/css/user.css'>
-    <script src='/asset/js/jquery.min.js'></script>
-    <script src='/asset/js/user.js'></script>
-@endsection
+@section('page', 'user')
 
 @section('title', $entry->name)
 
@@ -19,4 +15,8 @@
         <p>Rate: {{$entry->rating}}</p>
         <p>{{$entry->total}} votes</p>
     </section>
+@endsection
+
+@section('footer')
+    <h3>footer</h3>
 @endsection
