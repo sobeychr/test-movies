@@ -1,1 +1,26 @@
 @import 'global';
+
+.info-basic {
+    &__title {
+        color: #3030FF;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+.info-trailer {
+    div {
+        margin: 0 auto;
+        max-width: 720px;
+        width: 100%;
+
+        &:nth-child(n + 2) {
+            margin-top: 20px;
+        }
+
+        iframe {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

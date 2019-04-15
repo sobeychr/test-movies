@@ -16,7 +16,3 @@
         <p>{{$entry->total}} votes</p>
     </section>
 @endsection
-
-@section('footer')
-    <h3>footer</h3>
-@endsection

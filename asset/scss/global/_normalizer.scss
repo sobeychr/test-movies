@@ -6,16 +6,4 @@ html, body {
     padding: 0;
 }
 
-@import './normalizer/title';
-@import './normalizer/form';
-
-a {
-    color: #34968C;
-    cursor: pointer;
-    text-decoration: none;
-
-    &:hover {
-        color: #54CEC2;
-        text-decoration: underline;
-    }
-}
+@import './normalizer/imports';

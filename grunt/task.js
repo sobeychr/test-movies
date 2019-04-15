@@ -30,8 +30,8 @@ module.exports = grunt => {
 
     // Task configs
     configs.config = {
-        'assetSrc'  : './asset/',
-        'assetDest' : './public/asset/',
+        'assetSrc'  : 'asset/',
+        'assetDest' : 'public/asset/',
     };
 
     return configs;

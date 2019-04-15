@@ -10,7 +10,3 @@
         </ul>
     </nav>
 @endsection
-
-@section('footer')
-    <h3>footer</h3>
-@endsection

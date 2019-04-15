@@ -1,3 +1,6 @@
+require('@global/_collapse');
+require('@global/_nav');
+
 (function(win, $, doc, undefined) {
     'use strict';
 
