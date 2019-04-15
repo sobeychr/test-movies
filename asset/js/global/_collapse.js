@@ -2,15 +2,11 @@
     'use strict';
 
     const collapse = (function(){
-
-        const collClick = ['a', 'button', 'header', 'i', 'span'];
-        const collElem  = ['article', 'div', 'section'];
-
         const _configs = {
             classes: {
                 down        : 'fa-angle-down',
                 right       : 'fa-angle-right',
-                doubleDown  :  'fa-angle-double-down',
+                doubleDown  : 'fa-angle-double-down',
                 doubleRight : 'fa-angle-double-right'
             },
             attr       : 'data-collapse',
