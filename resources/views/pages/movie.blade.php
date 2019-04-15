@@ -35,26 +35,28 @@
                 </header>
 
                 <div class='info-basic' data-collapse-c='basic'>
-                    <ul>
+                    <ul class='blank'>
                         <li>
                             <span class='info-basic__title'>Title</span>
                             <span class='info-basic__data'>{{$entry->name}}</span>
                         </li>
                         <li>
-                            <span class='info-basic__title'>Release date</span>
-                            <span class='info-basic__data'>{{$entry->release}}</span>
-                        </li>
-                        <li>
-                            <span class='info-basic__title'>Time remaining</span>
-                            <span class='info-basic__data'>00:00:00</span>
-                        </li>
-                        <li>
-                            <span class='info-basic__title'>
-                                <a href='//www.boxofficemojo.com/movies/{{$entry->boxoffice}}' target='_blank'>
-                                    View Box Office
-                                    <i class='fas fa-external-link-alt'></i>
-                                </a>
+                            <span class='info-basic__title info-basic__title-date'>Release date</span>
+                            <span class='info-basic__data'>
+                                @component('components.date.display', ['timestamp' => $entry->release])@endcomponent
                             </span>
+                        </li>
+                        <li>
+                            <span class='info-basic__title info-basic__title-date'>Time remaining</span>
+                            <span class='info-basic__data'>
+                                @component('components.date.delay', ['timestamp' => $entry->release])@endcomponent
+                            </span>
+                        </li>
+                        <li>
+                            <a class='info-basic__box' href='//www.boxofficemojo.com/movies/{{$entry->boxoffice}}' target='_blank'>
+                                View Box Office
+                                <i class='fas fa-external-link-alt'></i>
+                            </a>
                         </li>
                     </ul>
                 </div>

@@ -1,5 +1,5 @@
 @php
-    $component = 'components.userentry';
+    $component = 'components.list.userentry';
 @endphp
 
 @extends('layouts.list')

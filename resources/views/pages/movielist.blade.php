@@ -1,5 +1,5 @@
 @php
-    $component = 'components.movieentry';
+    $component = 'components.list.movieentry';
 @endphp
 
 @extends('layouts.list')

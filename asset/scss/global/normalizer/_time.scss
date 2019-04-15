@@ -1,0 +1,25 @@
+.time {
+    &-over {
+        color: #F00;
+        font-weight: bold;
+    }
+
+    &-very-short {
+        color: #FFA500;
+        font-weight: bold;
+    }
+
+    &-short {
+        color: #FFA500;
+    }
+
+    &-medium {
+        color: #59FF00;
+        font-style: italic;
+    }
+
+    &-long {
+        color: #379E00;
+        font-style: italic;
+    }
+}

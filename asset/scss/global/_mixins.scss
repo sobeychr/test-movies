@@ -1,3 +1,9 @@
+@mixin mAfterSecond() {
+    &:nth-child(n + 2) {
+        @content;
+    }
+}
+
 @mixin mMobile() {
     @media (max-width: ($minPc - 1)) {
         @content;

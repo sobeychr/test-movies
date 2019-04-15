@@ -1,4 +1,4 @@
-$naxIconLeft: 20px;
+$navIconLeft: 20px;
 $navIconTop: 28px;
 
 aside {
@@ -30,8 +30,8 @@ aside {
     .nav-icon {
         cursor: pointer;
         font-size: $navIconTop;
-        left: $naxIconLeft * -1;
-        padding: $naxIconLeft;
+        left: $navIconLeft * -1;
+        padding: $navIconLeft;
         position: relative;
         top: $navIconTop * -1;
 
@@ -81,7 +81,7 @@ aside {
                 }
             }
 
-            &:nth-child(n + 2) {
+            @include mAfterSecond {
                 margin-top: 15px;
             }
         }
