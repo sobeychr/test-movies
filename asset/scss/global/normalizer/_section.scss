@@ -1,8 +1,18 @@
 article {
-    margin: 10px;
+    @include mMobile {
+        margin: 10px 0;
+    }
+    @include mPc {
+        margin: 10px;
+    }
 }
 section {
-    margin: 20px;
+    @include mMobile {
+        margin: 20px 0;
+    }
+    @include mPc {
+        margin: 20px;
+    }
 }
 
 article, section {

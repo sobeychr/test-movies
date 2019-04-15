@@ -33,10 +33,13 @@
         };
 
         const toggleArrow = ($arrow) => {
-            const isDouble = $arrow.hasClass(_configs.classes.doubleDown) || $arrow.hasClass(_configs.classes.doubleRight);
-            const clDown  = _configs.classes[ isDouble ? 'doubleDown'  : 'down'];
-            const clRight = _configs.classes[ isDouble ? 'doubleRight' : 'right'];
-            $arrow.toggleClass(clDown + ' ' + clRight);
+            const isDouble = $arrow.hasClass(_configs.classes.doubleDown)
+                || $arrow.hasClass(_configs.classes.doubleRight);
+            const classes = [
+                _configs.classes[ isDouble ? 'doubleDown'  : 'down'],
+                _configs.classes[ isDouble ? 'doubleRight' : 'right'],
+            ];
+            $arrow.toggleClass(classes.join(' '));
         };
 
         const toggleContent = (sel) => {
@@ -45,7 +48,7 @@
         };
 
         const onClick = (e) => {
-            const $target = $(e.target);
+            const $target = $(e.currentTarget);
             toggleArrow($target.is('.fas') ? $target : $target.find('.fas:first'));
             toggleContent($target.attr(_configs.attr));
         };

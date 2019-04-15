@@ -1,5 +1,19 @@
 @import 'global';
 
+header > h2 {
+    padding: 3px;
+
+    &:hover {
+        box-shadow: 0 0 3px 3px rgba(255,255,255, 0.2);
+    }
+
+    @include mMobile {
+        margin-left: $mainMobileMargin * -1;
+        padding-left: 6px;
+        width: calc(100% + 2 * #{$mainMobileMargin});
+    }
+}
+
 .info-basic {
     li {
         @include mAfterSecond {
@@ -10,11 +24,11 @@
     &__box {
         display: inline-block;
         font-style: italic;
-        text-indent: 20px;
+        margin-left: 30px;
     }
 
     &__title {
-        color: #1EA83A;
+        color: #FFF;
         font-weight: bold;
         margin-right: 7px;
 

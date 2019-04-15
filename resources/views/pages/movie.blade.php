@@ -77,6 +77,19 @@
 
             <article>
                 <header>
+                    <h2 data-collapse='rating'>
+                        <i class='fas fa-angle-down'></i>
+                        Rating
+                    </h2>
+                </header>
+
+                <div data-collapse-c='rating'>
+                    
+                </div>
+            </article>
+
+            <article>
+                <header>
                     <h2 data-collapse='trailer'>
                         <i class='fas fa-angle-down'></i>
                         Trailers

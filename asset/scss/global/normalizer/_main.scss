@@ -2,7 +2,7 @@ main {
     max-width: 750px;
 
     @include mMobile {
-        margin: 100px 5px 0 5px;
+        margin: 100px $mainMobileMargin 0 $mainMobileMargin;
     }
     @include mPc {
         margin: 10px 0 0 250px;

@@ -16,6 +16,7 @@ $router->get('/test', function () use ($router) {
     return $router->app->version();
 });
 
+/*
 $router->get('/test/anticipations', [
     'uses' => 'TestController@generateAnticipations',
 ]);
@@ -28,6 +29,7 @@ $router->get('/test/rates', [
 $router->get('/test/users', [
     'uses' => 'TestController@generateUsers',
 ]);
+*/
 
 // Actual routes
 $router->group(['namespace' => 'View'], function() use ($router) {
