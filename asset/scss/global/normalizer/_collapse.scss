@@ -1,0 +1,16 @@
+%collapse-icons {
+    color: #FFF;
+    margin-right: 5px;
+}
+
+*[data-collapse] {
+    cursor: pointer;
+
+    > i.fas {
+        @extend %collapse-icons;
+    }
+}
+
+i.fas[data-collapse] {
+    @extend %collapse-icons;
+}

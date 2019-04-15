@@ -1,7 +1,4 @@
 @import './variable';
 @import './mixins';
-@import './normalizer';
 
-@import './global/aside';
-@import './global/collapse';
-@import './global/main';
+@import './normalizer/default';

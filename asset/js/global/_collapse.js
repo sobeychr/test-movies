@@ -3,19 +3,21 @@
 
     const collapse = (function(){
 
+        const collClick = ['a', 'button', 'header', 'i', 'span'];
+        const collElem  = ['article', 'div', 'section'];
+
         const _configs = {
             classes: {
-                down:  'fa-angle-down',
-                right: 'fa-angle-right',
-                doubleDown:  'fa-angle-double-down',
-                doubleRight: 'fa-angle-double-right',
-
-                contentClose: 'collapse--close'
+                down        : 'fa-angle-down',
+                right       : 'fa-angle-right',
+                doubleDown  :  'fa-angle-double-down',
+                doubleRight : 'fa-angle-double-right'
             },
-            dataCollapse : 'data-collapse',
-            event        : 'click.collapse',
-            selCollapse  : 'i.fas[data-collapse]',
-            speed        : 300 // speed in ms
+            attr       : 'data-collapse',
+            event      : 'click.collapse',
+            selClick   : '*[data-collapse]',
+            selContent : '*[data-collapse-c="{{replace}}"]',
+            speed : 300 // speed in ms
         };
 
         const disable = ($obj) => {
@@ -23,7 +25,7 @@
         };
 
         const disableAll = () => {
-            $(_configs.selCollapse).off(_configs.event);
+            $(_configs.selClick).off(_configs.event);
         };
 
         const enable = ($obj) => {
@@ -31,27 +33,25 @@
         };
 
         const enableAll = () => {
-            $(_configs.selCollapse).on(_configs.event, onClick);
+            $(_configs.selClick).on(_configs.event, onClick);
         };
 
-        const toggleArrow = ($target) => {
-            const isDouble = $target.hasClass(_configs.classes.doubleDown) || $target.hasClass(_configs.classes.doubleRight);
-
-            const clDown  = isDouble ? _configs.classes.doubleDown : _configs.classes.down;
-            const clRight = isDouble ? _configs.classes.doubleRight : _configs.classes.right;
-            $target.toggleClass(clDown + ' ' + clRight);
+        const toggleArrow = ($arrow) => {
+            const isDouble = $arrow.hasClass(_configs.classes.doubleDown) || $arrow.hasClass(_configs.classes.doubleRight);
+            const clDown  = _configs.classes[ isDouble ? 'doubleDown'  : 'down'];
+            const clRight = _configs.classes[ isDouble ? 'doubleRight' : 'right'];
+            $arrow.toggleClass(clDown + ' ' + clRight);
         };
 
         const toggleContent = (sel) => {
-            $('*[' + _configs.dataCollapse + '="' + sel + '"]:not(i)')
-                .finish()
-                .slideToggle(_configs.speed);
+            const selector = _configs.selContent.replace('{{replace}}', sel);
+            $(selector).finish().slideToggle();
         };
 
         const onClick = (e) => {
             const $target = $(e.target);
-            toggleArrow($target);
-            toggleContent($target.attr(_configs.dataCollapse));
+            toggleArrow($target.is('.fas') ? $target : $target.find('.fas:first'));
+            toggleContent($target.attr(_configs.attr));
         };
 
         return {

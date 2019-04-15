@@ -11,7 +11,7 @@ require('@global/_nav');
         };
 
         const init = () => {
-            console.log('[USER]', 'init');
+            win.collapse.enableAll();
         };
 
         return {

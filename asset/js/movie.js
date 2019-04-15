@@ -15,6 +15,7 @@ require('@global/_nav');
         };
 
         const init = () => {
+            win.collapse.enableAll();
             $(win).on('resize.movie', onResize);
             onResize();
         };

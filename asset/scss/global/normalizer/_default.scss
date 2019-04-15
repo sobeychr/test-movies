@@ -6,4 +6,13 @@ html, body {
     padding: 0;
 }
 
-@import './normalizer/imports';
+@import
+    './aside',
+    './collapse',
+    './fas',
+    './form',
+    './link',
+    './main',
+    './section',
+    './title'
+;

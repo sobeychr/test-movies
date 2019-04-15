@@ -1,0 +1,12 @@
+.fas-hover {
+    display: none;
+}
+
+*:hover {
+    .fas-out {
+        display: none;
+    }
+    .fas-hover {
+        display: inline-block;
+    }
+}
