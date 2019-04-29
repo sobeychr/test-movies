@@ -45,6 +45,7 @@
     {
         extract($delayEntry);
         if($delay < $time) {
+            //echo '<pre>'.print_r($delayEntry,true).'</pre>';
             if(isset($cut)) {
                 $label = str_replace('{{replace}}', $cut, $label);
             }

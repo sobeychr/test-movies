@@ -39,6 +39,40 @@ header > h2 {
     }
 }
 
+.info-rating {
+    &__sum {
+        margin: 0 0 10px 0;
+        padding: 0;
+    }
+
+    &__graph {
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+
+        &__entry {
+            border: 1px solid transparent;
+            cursor: pointer;
+            float: left;
+            height: 100%;
+            position: relative;
+            width: 6px;
+
+            &:hover {
+                border-color: #00F;
+            }
+
+            div {
+                background: #FFF;
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                width: 100%;
+            }
+        }
+    }
+}
+
 .info-trailer {
     div {
         margin: 0 auto;

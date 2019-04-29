@@ -83,8 +83,15 @@
                     </h2>
                 </header>
 
-                <div data-collapse-c='rating'>
-                    
+                <div class='info-rating' data-collapse-c='rating'>
+                    <p class='info-rating__sum'>avg. {{$avg}}&#47;10 from {{$count}} rates</p>
+                    <div class='info-rating__graph'>
+                        @foreach($rating as $date=>$rate)
+                            <div class='info-rating__graph__entry' title='{{$rate * .1}}'>
+                                <div style='height: {{$rate}}%' data-date='{{$date}}'></div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </article>
 

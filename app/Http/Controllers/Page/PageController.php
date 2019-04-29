@@ -36,8 +36,15 @@ abstract class PageController extends BaseController
             return redirect($route);
         }
         
+        $rating = $this->getRating( $entry->id );
+        $count  = count($rating);
+        $avg    = round(array_sum($rating) / $count, 2);
+
         return View('pages.' . $this->viewEntry, [
-            'entry' => $entry,
+            'entry'  => $entry,
+            'avg'    => $avg * .1,
+            'count'  => $count,
+            'rating' => $rating,
         ]);
     }
    
@@ -55,4 +62,6 @@ abstract class PageController extends BaseController
             'list' => $list->get(),
         ]);
     }
+
+    abstract protected function getRating(int $id):array;
 }

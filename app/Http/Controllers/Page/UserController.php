@@ -14,4 +14,9 @@ class UserController extends PageController
     protected $viewEntry = 'user';
     protected $viewList  = 'userlist';
     protected $viewType  = 'user';
+
+    protected function getRating(int $id):array
+    {
+        return [];
+    }
 }
