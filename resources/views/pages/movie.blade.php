@@ -1,4 +1,7 @@
 @php
+    use App\Component\DateDelay;
+    $isBeforeDelay = DateDelay::isBeforeDelay($entry->release - NOW);
+
     $trailers = [];
     for($i=1; $i<=3; $i++)
     {
@@ -46,7 +49,7 @@
                             </span>
                         </li>
 
-                        @if($entry->release - NOW < 60*60*24*14)
+                        @if($isBeforeDelay)
                             <li>
                                 <span class='info-basic__title info-basic__title-date'>Time remaining</span>
                                 <span class='info-basic__data'>
@@ -89,7 +92,9 @@
                 </header>
 
                 <div class='info-rating' data-collapse-c='rating'>
-                    @if(count($rating) > 0)
+                    @empty($rating)
+                        Ratings not yet available
+                    @else
                         <p class='info-rating__sum'>avg. {{$avg}}&#47;10 from {{$count}} rates</p>
                         <div class='info-rating__graph'>
                             @foreach($rating as $date=>$rate)
@@ -98,8 +103,6 @@
                                 </div>
                             @endforeach
                         </div>
-                    @else
-                        Ratings not yet available
                     @endif
                 </div>
             </article>
@@ -113,11 +116,15 @@
                 </header>
 
                 <div class='info-trailer' data-collapse-c='trailer'>
-                    @foreach($trailers as $id)
-                    <div>
-                        <iframe src='https://www.youtube.com/embed/{{$id}}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
-                    </div>
-                    @endforeach
+                    @empty($trailers))
+                        No trailers yet
+                    @else
+                        @foreach($trailers as $id)
+                        <div>
+                            <iframe src='https://www.youtube.com/embed/{{$id}}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+                        </div>
+                        @endforeach
+                    @endif
                 </div>
             </article>
         </div>
