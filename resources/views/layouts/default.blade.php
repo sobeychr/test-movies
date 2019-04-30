@@ -8,7 +8,7 @@
         <script src='/asset/js/@yield('page').js'></script>
     </head>
     <body>
-        @component('components.aside')@endcomponent
+        @include('components.aside')
         
         <main>
             @yield('body')

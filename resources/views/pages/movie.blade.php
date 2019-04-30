@@ -1,6 +1,5 @@
 @php
     $trailers = [];
-
     for($i=1; $i<=3; $i++)
     {
         $e = 'trailer' . $i;
@@ -43,21 +42,27 @@
                         <li>
                             <span class='info-basic__title info-basic__title-date'>Release date</span>
                             <span class='info-basic__data'>
-                                @component('components.date.display', ['timestamp' => $entry->release])@endcomponent
+                                @include('components.date.display', ['timestamp' => $entry->release])
                             </span>
                         </li>
-                        <li>
-                            <span class='info-basic__title info-basic__title-date'>Time remaining</span>
-                            <span class='info-basic__data'>
-                                @component('components.date.delay', ['timestamp' => $entry->release])@endcomponent
-                            </span>
-                        </li>
-                        <li>
-                            <a class='info-basic__box' href='//www.boxofficemojo.com/movies/{{$entry->boxoffice}}' target='_blank'>
-                                View Box Office
-                                <i class='fas fa-external-link-alt'></i>
-                            </a>
-                        </li>
+
+                        @if($entry->release - NOW < 60*60*24*14)
+                            <li>
+                                <span class='info-basic__title info-basic__title-date'>Time remaining</span>
+                                <span class='info-basic__data'>
+                                    @include('components.date.delay', ['timestamp' => $entry->release])
+                                </span>
+                            </li>
+                        @endif
+
+                        @if($entry->boxoffice)
+                            <li>
+                                <a class='info-basic__box' href='//www.boxofficemojo.com/movies/{{$entry->boxoffice}}' target='_blank'>
+                                    View Box Office
+                                    <i class='fas fa-external-link-alt'></i>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </article>
@@ -84,14 +89,18 @@
                 </header>
 
                 <div class='info-rating' data-collapse-c='rating'>
-                    <p class='info-rating__sum'>avg. {{$avg}}&#47;10 from {{$count}} rates</p>
-                    <div class='info-rating__graph'>
-                        @foreach($rating as $date=>$rate)
-                            <div class='info-rating__graph__entry' title='{{$rate * .1}}'>
-                                <div style='height: {{$rate}}%' data-date='{{$date}}'></div>
-                            </div>
-                        @endforeach
-                    </div>
+                    @if(count($rating) > 0)
+                        <p class='info-rating__sum'>avg. {{$avg}}&#47;10 from {{$count}} rates</p>
+                        <div class='info-rating__graph'>
+                            @foreach($rating as $date=>$rate)
+                                <div class='info-rating__graph__entry' title='{{$rate * .1}}'>
+                                    <div style='height: {{$rate}}%' data-date='{{date("Y-m-d H:i:s", $date)}}'></div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        Ratings not yet available
+                    @endif
                 </div>
             </article>
 

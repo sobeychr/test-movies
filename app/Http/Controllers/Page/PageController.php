@@ -38,7 +38,9 @@ abstract class PageController extends BaseController
         
         $rating = $this->getRating( $entry->id );
         $count  = count($rating);
-        $avg    = round(array_sum($rating) / $count, 2);
+        $avg = $count > 0
+            ? round(array_sum($rating) / $count, 2)
+            : 0;
 
         return View('pages.' . $this->viewEntry, [
             'entry'  => $entry,
