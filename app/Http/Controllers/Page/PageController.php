@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Page;
 
+use App\Component\RateGraph;
 use App\Http\Data\MovieData;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
@@ -36,17 +37,12 @@ abstract class PageController extends BaseController
             return redirect($route);
         }
         
-        $rating = $this->getRating( $entry->id );
-        $count  = count($rating);
-        $avg = $count > 0
-            ? round(array_sum($rating) / $count, 2)
-            : 0;
+        $rates = $this->getRating($entry->id);
+        $rateGraph = new RateGraph($rates);
 
         return View('pages.' . $this->viewEntry, [
-            'entry'  => $entry,
-            'avg'    => $avg * .1,
-            'count'  => $count,
-            'rating' => $rating,
+            'entry' => $entry,
+            'rate'  => $rateGraph,
         ]);
     }
    

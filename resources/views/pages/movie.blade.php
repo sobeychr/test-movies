@@ -1,15 +1,29 @@
 @php
     use App\Component\DateDelay;
-    $isBeforeDelay = DateDelay::isBeforeDelay($entry->release - NOW);
 
-    $trailers = [];
-    for($i=1; $i<=3; $i++)
-    {
-        $e = 'trailer' . $i;
-        if($entry->$e) {
-            $trailers[] = $entry->$e;
-        }
-    }
+    $isBeforeDelay = DateDelay::isBeforeDelay(NOW - $entry->release);
+
+    $count = $rate->getCount();
+    $rows  = $rate->getRows();
+
+    echo "<!--\n".print_r($rows,true)."\n-->";
+
+    $trailers = $entry->getTrailers();
+
+    /*
+    @empty($rating)
+        Ratings not yet available
+    @else
+        <p class='info-rating__sum'>avg. {{$avg}}&#47;10 from {{$count}} rates</p>
+        <div class='info-rating__graph'>
+            @foreach($rating as $date=>$rate)
+                <div class='info-rating__graph__entry' title='{{$rate * .1}}'>
+                    <div style='height: {{$rate}}%' data-date='{{date("Y-m-d H:i:s", $date)}}'></div>
+                </div>
+            @endforeach
+        </div>
+    @endif
+    */
 @endphp
 
 @extends('layouts.default')
@@ -92,17 +106,33 @@
                 </header>
 
                 <div class='info-rating' data-collapse-c='rating'>
-                    @empty($rating)
+                    @if($isBeforeDelay)
                         Ratings not yet available
                     @else
-                        <p class='info-rating__sum'>avg. {{$avg}}&#47;10 from {{$count}} rates</p>
-                        <div class='info-rating__graph'>
-                            @foreach($rating as $date=>$rate)
-                                <div class='info-rating__graph__entry' title='{{$rate * .1}}'>
-                                    <div style='height: {{$rate}}%' data-date='{{date("Y-m-d H:i:s", $date)}}'></div>
-                                </div>
-                            @endforeach
-                        </div>
+                        @if($rate->isEmpty())
+                            No ratings yet
+                        @else
+                            <p class='info-rating__sum'>
+                                <span class='info-rating__sum__title'>Summary:</span>
+                                avg.
+                                <span class='info-rating__sum__rate'>{{$rate->getAvg()}}&#37;</span>
+                                over
+                                <span class='info-rating__sum__votes'>{{$count}}</span>
+                                votes
+                            </p>
+                            <div class='info-rating__row'>
+                                @foreach($rows as $vote => $row)
+                                    @php
+                                        $percent = round($row / $count * 100, 2);
+                                    @endphp
+                                    <div class='info-rating__row__entry'>
+                                        <div class='info-rating__row__entry__bar' style='width: {{$percent}}%'></div>
+                                        <span class='info-rating__row__entry__vote'>{{$vote}}</span>
+                                        <span class='info-rating__row__entry__sum'>{{$row}} &#47; {{$count}} - {{$percent}}&#37;</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                     @endif
                 </div>
             </article>
@@ -116,7 +146,7 @@
                 </header>
 
                 <div class='info-trailer' data-collapse-c='trailer'>
-                    @empty($trailers))
+                    @empty($trailers)
                         No trailers yet
                     @else
                         @foreach($trailers as $id)

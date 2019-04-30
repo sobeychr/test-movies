@@ -10,11 +10,14 @@ h1 {
     text-transform: uppercase;
 }
 h2, h3, h4, h5, h6 {
-    color: #3ED65C;
     font-variant: small-caps;
 }
 h2 {
+    color: #3ED65C;
     font-size: 20px;
+}
+h3, h4, h5, h6 {
+    color: #2D9943;
 }
 h3 {
     font-size: 18px;

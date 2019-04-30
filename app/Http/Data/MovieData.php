@@ -29,6 +29,26 @@ class MovieData extends PageData
         */
     ];
 
+    protected $trailers = false;
+
+    public function getTrailers():array
+    {
+        if(!is_array($this->trailers)) {
+
+            $this->trailers = [];
+
+            for($i=1; $i<=3; $i++)
+            {
+                $e = 'trailer' . $i;
+                if($this->$e) {
+                    $this->trailers[] = $this->$e;
+                }
+            }
+        }
+
+        return $this->trailers;
+    }
+
     public function hasAnticipation():bool
     {
         return !$this->isDeleted()
