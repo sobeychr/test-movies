@@ -1,29 +1,13 @@
 @php
     use App\Component\DateDelay;
+    use App\Component\RateGraph;
 
     $isBeforeDelay = DateDelay::isBeforeDelay(NOW - $entry->release);
 
     $count = $rate->getCount();
     $rows  = $rate->getRows();
 
-    echo "<!--\n".print_r($rows,true)."\n-->";
-
     $trailers = $entry->getTrailers();
-
-    /*
-    @empty($rating)
-        Ratings not yet available
-    @else
-        <p class='info-rating__sum'>avg. {{$avg}}&#47;10 from {{$count}} rates</p>
-        <div class='info-rating__graph'>
-            @foreach($rating as $date=>$rate)
-                <div class='info-rating__graph__entry' title='{{$rate * .1}}'>
-                    <div style='height: {{$rate}}%' data-date='{{date("Y-m-d H:i:s", $date)}}'></div>
-                </div>
-            @endforeach
-        </div>
-    @endif
-    */
 @endphp
 
 @extends('layouts.default')
@@ -124,11 +108,21 @@
                                 @foreach($rows as $vote => $row)
                                     @php
                                         $percent = round($row / $count * 100, 2);
-                                    @endphp
-                                    <div class='info-rating__row__entry'>
-                                        <div class='info-rating__row__entry__bar' style='width: {{$percent}}%'></div>
+                                        $rowClass = RateGraph::getRowClass($row);
+
+                                        // RateGraph::getRowClass();
+                                        /*
                                         <span class='info-rating__row__entry__vote'>{{$vote}}</span>
                                         <span class='info-rating__row__entry__sum'>{{$row}} &#47; {{$count}} - {{$percent}}&#37;</span>
+                                         */
+                                    @endphp
+                                    <div class='info-rating__row__entry'>
+                                        <div class='info-rating__row__entry__bar {{$rowClass}}' style='width: {{$percent}}%'></div>
+                                        <p class='info-rating__row__entry__sum'>
+                                            {{$count}} voted
+                                            <span class='info-rating__row__entry__vote'>{{$vote}}</span>
+                                            <span class='info-rating__row__entry__percent'>{{$percent}}&#37;</span>
+                                        </p>
                                     </div>
                                 @endforeach
                             </div>

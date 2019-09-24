@@ -4,11 +4,31 @@ namespace App\Component;
 
 class RateGraph
 {
+    const MIN = 0;
+    const MAX = 10;
+
+    const ROWS = [
+        'bad' => [0,1,2],
+        'low' => [3,4,5],
+        'medium' => [6,7,8],
+        'high' => [9,10],
+    ];
+
+    static public function getRowClass(int $row):string
+    {
+        foreach(self::ROWS as $class=>$list)
+        {
+            if(in_array($row, $list)) {
+                return $class;
+            }
+        }
+        return '';
+    }
+
     protected $avg = 0;
     protected $count = 0;
     protected $rates = [];
 
-    //protected $columns = [];
     protected $rows = [];
 
     public function __construct(array $rates)
@@ -25,47 +45,11 @@ class RateGraph
     public function getAvg():float   { return $this->avg;   }
     public function getCount():int   { return $this->count; }
     public function getRates():array { return $this->rates; }
-
-    /*
-    public function getColumns():array
-    {
-        if(count($this->columns) === 0 && !$this->isEmpty()) {
-
-            $lastDay = '';
-            $dayArr  = [];
-            foreach($this->getRates() as $date=>$rate)
-            {
-                $dayStr = date('m-d-H', $date);
-
-                if($dayStr === $lastDay) {
-                    $dayArr[] = $rate;
-                }
-                else {
-                    $lastDay = $dayStr;
-
-                    if(!empty($dayArr)) {
-                        $this->columns[$dayStr] = round(array_sum($dayArr) / count($dayArr), 2);
-                    }
-                }
-            }
-           
-            foreach($this->getRates() as $date=>$rate)
-            {
-                //$this->columns[ date('m-d-H-i', $date) ] = $rate;
-            }
-        }
-
-        return $this->columns;
-    }
-    */
    
     public function getRows():array
     {
         if(empty($this->rows) && !$this->isEmpty()) {
-            for($i=0; $i<=10; $i++)
-            {
-                $this->rows[$i] = 0;
-            }
+            $this->rows  = array_fill(self::MIN, self::MAX + 1, 0);
 
             foreach($this->rates as $rate)
             {

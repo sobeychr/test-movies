@@ -72,6 +72,23 @@ header > h2 {
             position: relative;
             margin-bottom: 3px;
 
+            &__bar {
+                background: #FFF;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                z-index: 2;
+            }
+
+            &__sum {
+                left: 0;
+                position: absolute;
+                top: 0;
+                z-index: 3;
+            }
+
+            /*
             &__vote {
                 display: block;
                 float: left;
@@ -88,19 +105,11 @@ header > h2 {
                 z-index: 10;
             }
 
-            &__bar {
-                background: #FFF;
-                height: 100%;
-                left: 0;
-                position: absolute;
-                top: 0;
-                z-index: 5;
-            }
-
             &:hover {
                 border-color: #FFF;
                 text-decoration: underline;
             }
+            */
         }
     }
 }
