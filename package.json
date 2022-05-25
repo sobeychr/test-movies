@@ -21,7 +21,7 @@
     },
     "homepage": "https://github.com/sobeychr/test-movies#readme",
     "dependencies": {
-        "grunt": "^1.0.3",
+        "grunt": "^1.5.3",
         "grunt-cli": "^1.3.2",
         "path": "^0.12.7"
     },
